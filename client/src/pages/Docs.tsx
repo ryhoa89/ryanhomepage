@@ -66,25 +66,72 @@ It means building something too strong to be ignored, too solid to be undone.
 Mosaic plays to win because it must.`
   },
   {
-    id: 'infrastructure-as-craft',
-    title: 'Infrastructure as Craft',
-    date: 'November 2024',
-    excerpt: 'Treating systems like they matter.',
-    content: `Infrastructure as Craft
+    id: 'why-fair-isnt-fair',
+    title: 'Why \'Fair\' Isn\'t Fair',
+    date: 'December 2024',
+    excerpt: 'Fairness smooths the world, but it never changes the game.',
+    content: `Why 'Fair' Isn't Fair
 
-There's a difference between code that works and code that's built to last.
+"Fairness."
+It sounds simple.
+It sounds kind.
+It sounds safe.
+But recently there's been a call for, fair to replace words like, Equality, diversity, and inclusion.
+And that swap matters more than most people realise.
 
-I think infrastructure should be treated like craft. Not art—art is personal and ephemeral. Not manufacturing—manufacturing is about volume and efficiency. Craft.
+We use "fair" to smooth the world.
+"Play fair."
+"That's not fair."
+"To be fair."
+"Fair enough."
+"It's only fair."
+"Life's not fair."
+"All's fair in love and war."
+Each phrase promises balance, but most of them end conversations rather than start them.
 
-Good craft means:
-- Understanding the material. Know your database. Know your network. Know your operating system.
-- Obsessing over details. The naming of variables. The clarity of logs. The graceful degradation under failure.
-- Accepting responsibility. You built this thing. It's yours. When it breaks at 3am, you own it.
-- Preferring longevity. Will this still make sense in five years? Can the next person understand it?
+"Play fair" stops the argument.
+"Fair enough" closes the critique.
+"To be fair" is how we defend what already is.
+Even "life's not fair" lets us accept inequity as inevitable, as if fairness were naïve.
+Across every idiom, fair acts as a moral anaesthetic, the language of neutrality; but neutrality always defaults to power. Fair is a balm that soothes tension while protecting the status quo. It's how we teach children to behave and adults to comply.
+It's social lubricant for systems that don't want to be questioned.
 
-The best infrastructure I've ever maintained was written by people who cared about these things. Not because they were paid more. Because they thought it mattered.
+We say "play fair" when one child bullies another  as if fairness were a lesson in manners, not a question of harm.
+Because fair is comfortable.
+It suggests the rules already work: we just need to apply them evenly.
+It's tidy. Non-threatening. Familiar.
 
-It does.`
+Fairness stops the conflict, but it never changes the game.
+It asks participants to share the ball, but not who designed the game?
+Fairness doesn't ask who wrote the rules; or whose comfort those rules are designed to protect. We like fairness because it feels simple. But simplicity isn't justice
+
+The Design Problem
+
+Real inclusion is design.
+It's structural thinking applied to human experience.
+It's not about fixing people, it's about fixing systems.
+It's architecture, not etiquette.
+And here's the paradox:
+You can't redesign systems in the name of 'fairness' while ignoring EDI.
+Design without equity isn't neutral, it's nostalgic.
+Equity asks: Who has power, and who doesn't?
+Diversity asks: Who is missing from the picture?
+Inclusion asks: What would we have to redesign so that more people can thrive?
+
+It quietly preserves the old defaults: whose pace counts, whose body fits, whose mind the process was built around.
+
+Design that claims to be "beyond DEI" simply rebuilds the same walls with smoother edges.That's why fair on its own isn't enough. Fairness is the civility of systems, procedural evenness that soothes rather than solves.
+
+It's nice, not kind;
+fair, not just.
+
+Nice keeps things pleasant. Kindness changes what's possible.
+Fairness keeps things orderly. Justice makes them right.
+Because fair is the outcome. It's not the process. When we trade equality for fairness, we don't soften inclusion and belonging we hollow it out. We move from confronting bias to comforting it. From accountability to ambiguity. From courage to compliance.
+
+At TryMosaic, fairness isn't what we aim for,  it's what emerges when systems are designed with equity at their core. It's the natural by-product of evidence-based inclusion. the kind built from structure, not slogans.
+That's why we keep inclusion at the centre: not as ideology, but as infrastructure.
+Because fairness without justice isn't fair at all.`
   },
   {
     id: 'on-remote-work',
@@ -114,7 +161,7 @@ interface DocsPageProps {
 }
 
 export function DocsPage({ onClose, isActive, onFocus }: DocsPageProps) {
-  const [selectedDoc, setSelectedDoc] = useState<string | null>('why-boring');
+  const [selectedDoc, setSelectedDoc] = useState<string | null>('play-to-win');
   const selectedDocData = DOCS.find(d => d.id === selectedDoc);
 
   return (
