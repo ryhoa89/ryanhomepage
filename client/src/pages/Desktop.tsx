@@ -75,42 +75,42 @@ export default function Desktop() {
         <DesktopIcon
           label="My Computer"
           icon={
-            <Monitor className="w-10 h-10 text-win-gray-light fill-win-teal stroke-[1.5]" />
+            <Monitor className="w-14 h-14 text-win-gray-light fill-win-teal stroke-[1.5]" />
           }
           onClick={() => openFromIcon("mycomputer")}
         />
         <DesktopIcon
           label="About Ryan"
           icon={
-            <User className="w-10 h-10 text-yellow-200 fill-yellow-600 stroke-[1.5]" />
+            <User className="w-14 h-14 text-yellow-200 fill-yellow-600 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("about")}
         />
         <DesktopIcon
           label="Projects"
           icon={
-            <Briefcase className="w-10 h-10 text-blue-200 fill-blue-600 stroke-[1.5]" />
+            <Briefcase className="w-14 h-14 text-blue-200 fill-blue-600 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("projects")}
         />
         <DesktopIcon
           label="Essays"
           icon={
-            <FileText className="w-10 h-10 text-orange-200 fill-orange-600 stroke-[1.5]" />
+            <FileText className="w-14 h-14 text-orange-200 fill-orange-600 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("docs")}
         />
         <DesktopIcon
           label="Why This Exists"
           icon={
-            <Terminal className="w-10 h-10 text-gray-200 fill-black stroke-[1.5]" />
+            <Terminal className="w-14 h-14 text-gray-200 fill-black stroke-[1.5]" />
           }
           onClick={() => openFromIcon("why")}
         />
         <DesktopIcon
           label="Contact"
           icon={
-            <Mail className="w-10 h-10 text-white fill-win-blue stroke-[1.5]" />
+            <Mail className="w-14 h-14 text-white fill-win-blue stroke-[1.5]" />
           }
           onClick={() => openFromIcon("contact")}
         />
@@ -121,7 +121,7 @@ export default function Desktop() {
         <DesktopIcon
           label="Text Pad.txt"
           icon={
-            <FileText className="w-10 h-10 text-gray-300 fill-gray-400 stroke-[1.5]" />
+            <FileText className="w-14 h-14 text-gray-300 fill-gray-400 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("textpad")}
         />
