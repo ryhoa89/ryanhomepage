@@ -144,28 +144,36 @@ export default function Desktop() {
            <div className="flex flex-col gap-4">
               <div className="border border-win-gray-dark p-2 bg-white">
                  <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
-                    <HardDrive className="w-4 h-4" /> Infrastructure Design
+                    <HardDrive className="w-4 h-4" /> TryMosaic
                  </h4>
                  <p className="text-xs text-gray-800">
-                    Building resilient backend systems. Focus on high availability and low maintenance.
+                    A software platform that makes reasonable adjustments unreasonably easy found at <a href="https://trymosaic.co" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">trymosaic.co</a>.
                  </p>
               </div>
               
               <div className="border border-win-gray-dark p-2 bg-white">
                  <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
-                    <Monitor className="w-4 h-4" /> Legacy Systems
+                    <Monitor className="w-4 h-4" /> neurotraits
                  </h4>
                  <p className="text-xs text-gray-800">
-                    Modernising critical business software without breaking it. Digital archaeology.
+                    A light tough profiler which makes a simple profile of your spiky profile found at <a href="https://neurotraits.trymosaic.co" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">neurotraits.trymosaic.co</a>.
                  </p>
               </div>
+             <div className="border border-win-gray-dark p-2 bg-white">
+                <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
+                   <Monitor className="w-4 h-4" /> Nosaic focus
+                </h4>
+                <p className="text-xs text-gray-800">
+                   A hygee pomodero timer which is ND friendly. Described as the "cutest time i've ever seen." found at  <a href="https://focus.trymosaic.co" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">focus.trymosaic.co</a>.
+                </p>
+             </div>
 
               <div className="border border-win-gray-dark p-2 bg-white">
                  <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
                     <User className="w-4 h-4" /> Consulting
                  </h4>
                  <p className="text-xs text-gray-800">
-                    Helping small technical teams scale their processes, not just their servers.
+                    I do talks on product, neurodiversty and tech contact me <a href="mailto:hello@trymosaic.co"  className="text-blue-500 underline">here</a> to find out more.
                  </p>
               </div>
            </div>
