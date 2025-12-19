@@ -13,6 +13,7 @@ import {
   Terminal,
   FileText,
   Image,
+  PlayIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -180,17 +181,22 @@ export default function Desktop() {
                   <span>Projects</span>
                 </button>
                 <div className="px-3 py-2 text-xs text-gray-600 font-bold">
-                  <Briefcase className="w-3 h-3 inline mr-1" />Projects
+                  <Briefcase className="w-3 h-3 inline mr-1" />
+                  Projects
                 </div>
                 <button
-                  onClick={() => window.open("https://neurotraits.trymosaic.co", "_blank")}
+                  onClick={() =>
+                    window.open("https://neurotraits.trymosaic.co", "_blank")
+                  }
                   className="w-full text-left px-6 py-2 text-xs hover:bg-win-blue hover:text-white border-b border-gray-100"
                   data-testid="mycomputer-neurotraits"
                 >
                   NeuroTraits
                 </button>
                 <button
-                  onClick={() => window.open("https://focus.trymosaic.co", "_blank")}
+                  onClick={() =>
+                    window.open("https://focus.trymosaic.co", "_blank")
+                  }
                   className="w-full text-left px-6 py-2 text-xs hover:bg-win-blue hover:text-white border-b border-gray-100"
                   data-testid="mycomputer-pomadeaux"
                 >
@@ -270,23 +276,34 @@ export default function Desktop() {
             </div>
             <h4 className="font-bold mb-2">About</h4>
             <p className="mb-4">
-              I build systems that help organisations deal with reality rather than pretend it is simpler than it is.
+              I build systems that help organisations deal with reality rather
+              than pretend it is simpler than it is.
             </p>
             <p className="mb-4">
-              Most of my work sits at the junction of software, policy, and human behaviour. I focus on the parts that are usually hand-waved away: edge cases, accountability, compliance, trust, and what happens when a process meets a tired person on a bad day.
+              Most of my work sits at the junction of software, policy, and
+              human behaviour. I focus on the parts that are usually hand-waved
+              away: edge cases, accountability, compliance, trust, and what
+              happens when a process meets a tired person on a bad day.
             </p>
             <p className="mb-4">
-              I'm the founder of TryMosaic, a platform that turns reasonable adjustments from an awkward conversation into dependable infrastructure. The work is grounded in lived experience, and shaped by time spent inside large institutions where good intentions routinely fail without systems to support them.
+              I'm the founder of TryMosaic, a platform that turns reasonable
+              adjustments from an awkward conversation into dependable
+              infrastructure. The work is grounded in lived experience, and
+              shaped by time spent inside large institutions where good
+              intentions routinely fail without systems to support them.
             </p>
             <p className="mb-4">
-              I'm sceptical of novelty for its own sake. I care about things that work quietly, scale without drama, and stand up to scrutiny. My default move is to reduce complexity, make responsibility explicit, and design for the person who has to use the system when they are already under pressure.
+              I'm sceptical of novelty for its own sake. I care about things
+              that work quietly, scale without drama, and stand up to scrutiny.
+              My default move is to reduce complexity, make responsibility
+              explicit, and design for the person who has to use the system when
+              they are already under pressure.
             </p>
             <p className="mb-4">
-              I write in plain English because clarity is a form of respect. I build software the same way.
+              I write in plain English because clarity is a form of respect. I
+              build software the same way.
             </p>
-            <p>
-              I'm based in Bristol, and I'm a parent to a wonderful child.
-            </p>
+            <p>I'm based in Bristol, and I'm a parent to a wonderful child.</p>
           </div>
         </WindowFrame>
       )}
@@ -307,75 +324,105 @@ export default function Desktop() {
           <div className="flex flex-col gap-4">
             <div className="border border-win-gray-dark p-2 bg-white">
               <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
-                <HardDrive className="w-4 h-4" /> TryMosaic
+                <PlayIcon className="w-4 h-4" /> What am I working on?
               </h4>
               <p className="text-xs text-gray-800">
-                A software platform that makes reasonable adjustments
-                unreasonably easy found at{" "}
+                I build small tools and platforms at the intersection of
+                neurodiversity, work, and humane technology. Some are
+                experiments, some are practical utilities, and some grow into
+                proper products. This page is a living index of those projects.
+                It includes{" "}
                 <a
                   href="https://trymosaic.co"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 underline"
+                  className="text-blue-800 underline"
                 >
-                  trymosaic.co
-                </a>
-                .
-              </p>
-            </div>
-
-            <div className="border border-win-gray-dark p-2 bg-white">
-              <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
-                <Monitor className="w-4 h-4" /> neurotraits
-              </h4>
-              <p className="text-xs text-gray-800">
-                A light tough profiler which makes a simple profile of your
-                spiky profile found at{" "}
-                <a
-                  href="https://neurotraits.trymosaic.co"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline"
-                >
-                  neurotraits.trymosaic.co
-                </a>
-                .
-              </p>
-            </div>
-            <div className="border border-win-gray-dark p-2 bg-white">
-              <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
-                <Monitor className="w-4 h-4" /> Mosaic focus
-              </h4>
-              <p className="text-xs text-gray-800">
-                A hygee pomodero timer(A gentle focus timer) which is ND
-                friendly. Described as the "cutest time i've ever seen." found
-                at{" "}
-                <a
-                  href="https://focus.trymosaic.co"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline"
-                >
-                  focus.trymosaic.co
-                </a>
-                .
-              </p>
-            </div>
-
-            <div className="border border-win-gray-dark p-2 bg-white">
-              <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
-                <User className="w-4 h-4" /> Consulting
-              </h4>
-              <p className="text-xs text-gray-800">
-                I do talks on product, neurodiversty and tech contact me{" "}
-                <a
-                  href="mailto:hello@trymosaic.co"
-                  className="text-blue-500 underline"
-                >
-                  here
+                  TryMosaic
                 </a>{" "}
-                to find out more.
+                a workplace adjustments platform built to help organisations
+                handle reasonable adjustments clearly, consistently, and with
+                less friction for everyone involved. Alongside that are smaller
+                tools, prototypes, and side projects that explore focus,
+                self-understanding, and better ways of working.
               </p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="border border-win-gray-dark p-2 bg-white">
+                <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
+                  <HardDrive className="w-4 h-4" /> TryMosaic
+                </h4>
+                <p className="text-xs text-gray-800">
+                  TryMosaic is a software platform I’m building to help
+                  employers handle reasonable adjustments properly. It gives
+                  employees a clear way to describe what they need, helps
+                  managers respond consistently, and gives HR an auditable
+                  record aligned with UK equality law you can find it{" "}
+                  <a
+                    href="https://trymosaic.co"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-800 underline"
+                  >
+                    here
+                  </a>
+                  .
+                </p>
+              </div>
+
+              <div className="border border-win-gray-dark p-2 bg-white">
+                <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
+                  <Monitor className="w-4 h-4" /> neurotraits
+                </h4>
+                <p className="text-xs text-gray-800">
+                  A light tough profiler which makes a simple profile of your
+                  spiky profile found at{" "}
+                  <a
+                    href="https://neurotraits.trymosaic.co"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-800 underline"
+                  >
+                    neurotraits.trymosaic.co
+                  </a>
+                  .
+                </p>
+              </div>
+              <div className="border border-win-gray-dark p-2 bg-white">
+                <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
+                  <Monitor className="w-4 h-4" /> Mosaic focus
+                </h4>
+                <p className="text-xs text-gray-800">
+                  A hygee pomodero timer(A gentle focus timer) which is ND
+                  friendly. Described as the "cutest time i've ever seen." found
+                  at{" "}
+                  <a
+                    href="https://focus.trymosaic.co"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-800 underline"
+                  >
+                    focus.trymosaic.co
+                  </a>
+                  .
+                </p>
+              </div>
+
+              <div className="border border-win-gray-dark p-2 bg-white">
+                <h4 className="font-bold text-sm mb-1 flex items-center gap-2">
+                  <User className="w-4 h-4" /> Consulting
+                </h4>
+                <p className="text-xs text-gray-800">
+                  I do talks on product, neurodiversty and tech contact me{" "}
+                  <a
+                    href="mailto:hello@trymosaic.co"
+                    className="text-blue-800 underline"
+                  >
+                    here
+                  </a>{" "}
+                  to find out more.
+                </p>
+              </div>
             </div>
           </div>
         </WindowFrame>
@@ -400,10 +447,13 @@ export default function Desktop() {
             <p className="mb-1">It is static.</p>
             <p className="mb-4">It does not track you</p>
             <p className="mb-4">
-              I spend my working life building systems that are meant to support people. Too often, the tools we use do the opposite. They add friction, noise, and obligation where there should be clarity.
+              I spend my working life building systems that are meant to support
+              people. Too often, the tools we use do the opposite. They add
+              friction, noise, and obligation where there should be clarity.
             </p>
             <p className="mb-4">
-              This site is intentionally simple. It loads quickly. It explains itself. It gets out of the way.
+              This site is intentionally simple. It loads quickly. It explains
+              itself. It gets out of the way.
             </p>
             <p>Also, I really miss Windows 95.</p>
           </div>
