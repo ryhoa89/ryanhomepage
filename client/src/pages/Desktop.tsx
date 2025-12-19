@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { WindowFrame } from "@/components/WindowFrame";
 import { DesktopIcon } from "@/components/DesktopIcon";
 import { DocsWindow } from "@/pages/Docs";
+import { TextPadWindow } from "@/pages/TextPad";
 import {
   User,
   Briefcase,
@@ -22,6 +23,7 @@ export default function Desktop() {
     why: false,
     contact: false,
     docs: false,
+    textpad: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState<
     Record<string, boolean>
@@ -32,6 +34,7 @@ export default function Desktop() {
     why: false,
     contact: false,
     docs: false,
+    textpad: false,
   });
 
   const bringToFront = (id: string) => {
@@ -96,6 +99,13 @@ export default function Desktop() {
             <FileText className="w-10 h-10 text-orange-200 fill-orange-600 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("docs")}
+        />
+        <DesktopIcon
+          label="Text Pad.txt"
+          icon={
+            <FileText className="w-10 h-10 text-gray-300 fill-gray-400 stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("textpad")}
         />
         <DesktopIcon
           label="Why This Exists"
@@ -189,6 +199,14 @@ export default function Desktop() {
                 >
                   <FileText className="w-4 h-4 flex-shrink-0" />
                   <span>Why This Exists.txt</span>
+                </button>
+                <button
+                  onClick={() => bringToFront("textpad")}
+                  className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="mycomputer-textpad"
+                >
+                  <FileText className="w-4 h-4 flex-shrink-0" />
+                  <span>Text Pad.txt</span>
                 </button>
                 <button
                   onClick={() => bringToFront("contact")}
@@ -421,6 +439,23 @@ export default function Desktop() {
         />
       )}
 
+      {openWindows.textpad && (
+        <WindowFrame
+          id="textpad"
+          title="Text Pad.txt"
+          initialPosition={{ x: 60, y: 50 }}
+          isActive={activeWindow === "textpad"}
+          onFocus={() => bringToFront("textpad")}
+          onClose={() => closeWindow("textpad")}
+          onMinimize={() => minimizeWindow("textpad")}
+          width="600px"
+          height="500px"
+          className={minimizedWindows.textpad ? "hidden" : ""}
+        >
+          <TextPadWindow />
+        </WindowFrame>
+      )}
+
       {/* Taskbar */}
       <div className="absolute bottom-0 left-0 w-full h-[28px] bg-win-gray border-t border-win-white flex items-center px-1 z-[100] shadow-[0_-1px_0_#808080]">
         <button className="flex items-center gap-1 px-1 h-[22px] border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-sm shadow-[1px_1px_0_black]">
@@ -450,6 +485,7 @@ export default function Desktop() {
                   {id === "about" && <User className="w-3 h-3" />}
                   {id === "projects" && <Briefcase className="w-3 h-3" />}
                   {id === "docs" && <FileText className="w-3 h-3" />}
+                  {id === "textpad" && <FileText className="w-3 h-3" />}
                   {id === "why" && <Terminal className="w-3 h-3" />}
                   {id === "contact" && <Mail className="w-3 h-3" />}
                   <span className="capitalize truncate">
@@ -459,7 +495,9 @@ export default function Desktop() {
                         ? "Why This Exists.txt"
                         : id === "docs"
                           ? "Essays"
-                          : id}
+                          : id === "textpad"
+                            ? "Text Pad.txt"
+                            : id}
                   </span>
                 </button>
               ),
