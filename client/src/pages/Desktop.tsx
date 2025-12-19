@@ -256,10 +256,11 @@ export default function Desktop() {
         >
           <div className="prose prose-sm max-w-none text-black">
             <div className="flex gap-4 mb-4 items-start">
-              <div className="w-16 h-16 bg-gray-200 border border-black shadow-inner flex-shrink-0 flex items-center justify-center">
-                {/* Placeholder for avatar if needed, or just a gray box */}
-                <User className="w-8 h-8 text-gray-400" />
-              </div>
+              <img
+                src="/photos/photo3.jpg"
+                alt="Ryan Hoare"
+                className="w-16 h-16 border border-black shadow-inner flex-shrink-0 object-cover"
+              />
               <div>
                 <h3 className="text-lg font-bold font-sans m-0">Ryan Hoare</h3>
                 <p className="text-sm mt-1 italic">
