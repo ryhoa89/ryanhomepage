@@ -117,7 +117,7 @@ export default function Desktop() {
       </div>
 
       {/* Desktop Icons - Right */}
-      <div className="absolute top-4 right-4 flex flex-col gap-6 z-0">
+      <div className="absolute top-1/3 right-4 flex flex-col gap-6 z-0">
         <DesktopIcon
           label="Text Pad.txt"
           icon={
