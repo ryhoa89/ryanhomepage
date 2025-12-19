@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { WindowFrame } from '@/components/WindowFrame';
 import { DesktopIcon } from '@/components/DesktopIcon';
-import { User, Briefcase, Mail, Monitor, HardDrive, Terminal } from 'lucide-react';
+import { DocsWindow } from '@/pages/Docs';
+import { User, Briefcase, Mail, Monitor, HardDrive, Terminal, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function Desktop() {
@@ -11,12 +12,14 @@ export default function Desktop() {
     projects: true,
     why: false,
     contact: false,
+    docs: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState<Record<string, boolean>>({
     about: false,
     projects: false,
     why: false,
     contact: false,
+    docs: false,
   });
 
   const bringToFront = (id: string) => {
@@ -68,6 +71,11 @@ export default function Desktop() {
           label="Projects" 
           icon={<Briefcase className="w-10 h-10 text-blue-200 fill-blue-600 stroke-[1.5]" />} 
           onClick={() => openFromIcon('projects')} 
+        />
+        <DesktopIcon 
+          label="Essays" 
+          icon={<FileText className="w-10 h-10 text-orange-200 fill-orange-600 stroke-[1.5]" />} 
+          onClick={() => openFromIcon('docs')} 
         />
         <DesktopIcon 
           label="Why This Exists" 
@@ -207,6 +215,18 @@ export default function Desktop() {
         </WindowFrame>
       )}
 
+      {openWindows.docs && (
+        <DocsWindow
+          id="docs"
+          initialPosition={{ x: 150, y: 250 }}
+          isActive={activeWindow === 'docs'}
+          onFocus={() => bringToFront('docs')}
+          onClose={() => closeWindow('docs')}
+          onMinimize={() => minimizeWindow('docs')}
+          className={minimizedWindows.docs ? 'hidden' : ''}
+        />
+      )}
+
       {/* Taskbar */}
       <div className="absolute bottom-0 left-0 w-full h-[28px] bg-win-gray border-t border-win-white flex items-center px-1 z-[100] shadow-[0_-1px_0_#808080]">
         <button 
@@ -232,9 +252,10 @@ export default function Desktop() {
                 >
                    {id === 'about' && <User className="w-3 h-3" />}
                    {id === 'projects' && <Briefcase className="w-3 h-3" />}
+                   {id === 'docs' && <FileText className="w-3 h-3" />}
                    {id === 'why' && <Terminal className="w-3 h-3" />}
                    {id === 'contact' && <Mail className="w-3 h-3" />}
-                   <span className="capitalize truncate">{id === 'why' ? 'Why This Exists.txt' : id}</span>
+                   <span className="capitalize truncate">{id === 'why' ? 'Why This Exists.txt' : id === 'docs' ? 'Essays' : id}</span>
                 </button>
             ))}
         </div>
