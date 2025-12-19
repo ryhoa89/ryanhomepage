@@ -70,7 +70,7 @@ export default function Desktop() {
 
   return (
     <div className="w-full h-screen bg-win-teal relative overflow-hidden select-none p-4 font-sans text-sm">
-      {/* Desktop Icons */}
+      {/* Desktop Icons - Left */}
       <div className="absolute top-4 left-4 flex flex-col gap-6 z-0">
         <DesktopIcon
           label="My Computer"
@@ -101,13 +101,6 @@ export default function Desktop() {
           onClick={() => openFromIcon("docs")}
         />
         <DesktopIcon
-          label="Text Pad.txt"
-          icon={
-            <FileText className="w-10 h-10 text-gray-300 fill-gray-400 stroke-[1.5]" />
-          }
-          onClick={() => openFromIcon("textpad")}
-        />
-        <DesktopIcon
           label="Why This Exists"
           icon={
             <Terminal className="w-10 h-10 text-gray-200 fill-black stroke-[1.5]" />
@@ -120,6 +113,17 @@ export default function Desktop() {
             <Mail className="w-10 h-10 text-white fill-win-blue stroke-[1.5]" />
           }
           onClick={() => openFromIcon("contact")}
+        />
+      </div>
+
+      {/* Desktop Icons - Right */}
+      <div className="absolute top-4 right-4 flex flex-col gap-6 z-0">
+        <DesktopIcon
+          label="Text Pad.txt"
+          icon={
+            <FileText className="w-10 h-10 text-gray-300 fill-gray-400 stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("textpad")}
         />
       </div>
 
