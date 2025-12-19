@@ -3,6 +3,7 @@ import { WindowFrame } from "@/components/WindowFrame";
 import { DesktopIcon } from "@/components/DesktopIcon";
 import { DocsWindow } from "@/pages/Docs";
 import { TextPadWindow } from "@/pages/TextPad";
+import { PhotosWindow } from "@/pages/Photos";
 import {
   User,
   Briefcase,
@@ -11,6 +12,7 @@ import {
   HardDrive,
   Terminal,
   FileText,
+  Image,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +26,7 @@ export default function Desktop() {
     contact: false,
     docs: false,
     textpad: false,
+    photos: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState<
     Record<string, boolean>
@@ -35,6 +38,7 @@ export default function Desktop() {
     contact: false,
     docs: false,
     textpad: false,
+    photos: false,
   });
 
   const bringToFront = (id: string) => {
@@ -122,6 +126,13 @@ export default function Desktop() {
 
       {/* Desktop Icons - Right */}
       <div className="absolute top-1/3 right-4 flex flex-col gap-6 z-0">
+        <DesktopIcon
+          label="My Photos"
+          icon={
+            <Image className="w-14 h-14 text-blue-300 fill-blue-500 stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("photos")}
+        />
         <DesktopIcon
           label="Text Pad.txt"
           icon={
@@ -464,6 +475,23 @@ export default function Desktop() {
         </WindowFrame>
       )}
 
+      {openWindows.photos && (
+        <WindowFrame
+          id="photos"
+          title="My Photos"
+          initialPosition={{ x: 60, y: 60 }}
+          isActive={activeWindow === "photos"}
+          onFocus={() => bringToFront("photos")}
+          onClose={() => closeWindow("photos")}
+          onMinimize={() => minimizeWindow("photos")}
+          width="600px"
+          height="500px"
+          className={minimizedWindows.photos ? "hidden" : ""}
+        >
+          <PhotosWindow />
+        </WindowFrame>
+      )}
+
       {/* Taskbar */}
       <div className="absolute bottom-0 left-0 w-full h-[28px] bg-win-gray border-t border-win-white flex items-center px-1 z-[100] shadow-[0_-1px_0_#808080]">
         <button className="flex items-center gap-1 px-1 h-[22px] border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-sm shadow-[1px_1px_0_black]">
@@ -494,6 +522,7 @@ export default function Desktop() {
                   {id === "projects" && <Briefcase className="w-3 h-3" />}
                   {id === "docs" && <FileText className="w-3 h-3" />}
                   {id === "textpad" && <FileText className="w-3 h-3" />}
+                  {id === "photos" && <Image className="w-3 h-3" />}
                   {id === "why" && <Terminal className="w-3 h-3" />}
                   {id === "contact" && <Mail className="w-3 h-3" />}
                   <span className="capitalize truncate">
@@ -505,7 +534,9 @@ export default function Desktop() {
                           ? "Essays"
                           : id === "textpad"
                             ? "Text Pad.txt"
-                            : id}
+                            : id === "photos"
+                              ? "My Photos"
+                              : id}
                   </span>
                 </button>
               ),
