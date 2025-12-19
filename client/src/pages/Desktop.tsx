@@ -210,7 +210,7 @@ export default function Desktop() {
           <div className="text-center p-4">
             <p className="mb-4">The best way to reach me is email.</p>
             <a 
-              href="mailto:hello@ryanhoare.com" 
+              href="mailto:ryan@trymosaic.co" 
               className="inline-block border-2 border-win-gray-dark border-t-white border-l-white bg-win-gray px-4 py-1 active:border-t-black active:border-l-black active:border-b-white active:border-r-white hover:bg-win-gray-light text-black no-underline"
             >
               Email Ryan
