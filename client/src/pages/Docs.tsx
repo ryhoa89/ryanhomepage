@@ -12,23 +12,58 @@ interface DocEntry {
 
 const DOCS: DocEntry[] = [
   {
-    id: 'why-boring',
-    title: 'Why Boring Technology Wins',
+    id: 'play-to-win',
+    title: 'Why we Play to win',
     date: 'December 2024',
-    excerpt: 'A case for choosing reliability over novelty.',
-    content: `Why Boring Technology Wins
+    excerpt: 'Because the stakes are too high not to win.',
+    content: `Why we Play to win
 
-Technology changes quickly. But reliability doesn't.
+People sometimes ask why i'm so obsessed with competition.
+Why we talk about winning in a space that's supposed to be collaborative, charitable, even gentle.
+Why we sound more like a startup than a social movement.
+It's a fair question.
+But the answer is simple: because the stakes are too high not to win.
 
-The most useful infrastructure I've built has always been the simplest. A Postgres database. A few shell scripts. Load balancers that do one thing well.
+This work matters.
+It affects millions of people in the UK and billions globally.
+If we fail, it's not just us that loses.
+It's every neurodivergent and disabled person still trapped in systems that don't work.
+You can't fix that with goodwill alone.
+You fix it with infrastructure — secure, standardised, trusted.
+Infrastructure is expensive.
+Expensive means venture-scale.
+Venture-scale means capital.
+Capital means traction.
+Traction means winning.
+You can build good tools slowly, or build great systems fast.
+We chose fast — because people can't wait.
 
-I've watched teams spend months building "modern" solutions that collapsed under mild stress. Meanwhile, the boring stuff—the stuff that was ancient when we deployed it—ran without incident for years.
+There's a comforting myth that everyone can win.
+But that's only true if everyone's competent, ethical, and aligned.
+They're not.
+We play to win because others are already playing to win.
+Some with integrity. Some without.
+Pretending otherwise only helps the ones who play dirty.
+Bad actors turn trust into marketing.
+Mediocre platforms treat people's data like an afterthought.
+Grant-funded pilots vanish after twelve months, leaving employers disillusioned and employees exposed.
+If we don't play to win, those are the people who do.
+And when they win, people get hurt.
 
-The best time to choose boring is before you need to. Once you're dealing with millions of requests per day, switching from your shiny framework to something stable becomes a migration nightmare.
+Playing to win doesn't mean ego.
+It means stewardship.
+It means building the standard that protects everyone else.
+It means out-executing the performative, out-thinking the careless, and out-lasting the opportunistic.
+It means carrying the weight of knowing that if we don't build it right, someone else will build it wrong.
 
-This isn't about being anti-innovation. It's about understanding the cost of complexity. Every abstraction buys you something. But it costs you something too: observability, debuggability, replacability.
-
-Choose boring when stakes are high. Innovate at the edges.`
+We're not competing for attention.
+We're competing with entropy — with chaos, confusion, and inconsistency.
+Winning means fairness becomes predictable.
+It means the system works quietly, everywhere, for everyone.
+Winning doesn't mean burning out.
+It means staying sharp enough to keep building.
+It means building something too strong to be ignored, too solid to be undone.
+Mosaic plays to win because it must.`
   },
   {
     id: 'infrastructure-as-craft',
