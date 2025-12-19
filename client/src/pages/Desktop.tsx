@@ -95,12 +95,13 @@ export default function Desktop() {
         <WindowFrame
           id="about"
           title="About Ryan"
-          initialPosition={{ x: 100, y: 50 }}
+          initialPosition={{ x: 40, y: 30 }}
           isActive={activeWindow === 'about'}
           onFocus={() => bringToFront('about')}
           onClose={() => closeWindow('about')}
           onMinimize={() => minimizeWindow('about')}
-          width={400}
+          width="80vw"
+          height="80vh"
           className={minimizedWindows.about ? 'hidden' : ''}
         >
           <div className="prose prose-sm max-w-none text-black">
@@ -131,12 +132,13 @@ export default function Desktop() {
         <WindowFrame
           id="projects"
           title="What I'm Working On"
-          initialPosition={{ x: 200, y: 150 }}
+          initialPosition={{ x: 40, y: 30 }}
           isActive={activeWindow === 'projects'}
           onFocus={() => bringToFront('projects')}
           onClose={() => closeWindow('projects')}
           onMinimize={() => minimizeWindow('projects')}
-          width={450}
+          width="80vw"
+          height="80vh"
           className={minimizedWindows.projects ? 'hidden' : ''}
         >
            <div className="flex flex-col gap-4">
@@ -174,12 +176,13 @@ export default function Desktop() {
         <WindowFrame
           id="why"
           title="Why This Exists.txt"
-          initialPosition={{ x: 300, y: 100 }}
+          initialPosition={{ x: 40, y: 30 }}
           isActive={activeWindow === 'why'}
           onFocus={() => bringToFront('why')}
           onClose={() => closeWindow('why')}
           onMinimize={() => minimizeWindow('why')}
-          width={350}
+          width="80vw"
+          height="80vh"
           className={minimizedWindows.why ? 'hidden' : ''}
         >
           <div className="font-mono text-sm">
@@ -195,12 +198,13 @@ export default function Desktop() {
         <WindowFrame
           id="contact"
           title="Contact Me"
-          initialPosition={{ x: 400, y: 200 }}
+          initialPosition={{ x: 40, y: 30 }}
           isActive={activeWindow === 'contact'}
           onFocus={() => bringToFront('contact')}
           onClose={() => closeWindow('contact')}
           onMinimize={() => minimizeWindow('contact')}
-          width={300}
+          width="80vw"
+          height="80vh"
           className={minimizedWindows.contact ? 'hidden' : ''}
         >
           <div className="text-center p-4">
@@ -218,11 +222,13 @@ export default function Desktop() {
       {openWindows.docs && (
         <DocsWindow
           id="docs"
-          initialPosition={{ x: 150, y: 250 }}
+          initialPosition={{ x: 40, y: 30 }}
           isActive={activeWindow === 'docs'}
           onFocus={() => bringToFront('docs')}
           onClose={() => closeWindow('docs')}
           onMinimize={() => minimizeWindow('docs')}
+          width="80vw"
+          height="80vh"
           className={minimizedWindows.docs ? 'hidden' : ''}
         />
       )}
