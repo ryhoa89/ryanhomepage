@@ -265,13 +265,16 @@ export default function Desktop() {
           height="80vh"
           className={minimizedWindows.why ? "hidden" : ""}
         >
-          <div className="font-mono text-sm">
-            <p className="mb-2">This site is a reaction to the modern web.</p>
-            <p className="mb-2">
-              It is calm. It is static. It does not track you.
+          <div className="font-mono text-sm leading-relaxed">
+            <p className="mb-4">This site is a reaction to the modern web.</p>
+            <p className="mb-1">It is calm.</p>
+            <p className="mb-1">It is static.</p>
+            <p className="mb-4">It does not track you</p>
+            <p className="mb-4">
+              I spend my working life building systems that are meant to support people. Too often, the tools we use do the opposite. They add friction, noise, and obligation where there should be clarity.
             </p>
-            <p className="mb-2">
-              It loads instantly and respects your attention.
+            <p className="mb-4">
+              This site is intentionally simple. It loads quickly. It explains itself. It gets out of the way.
             </p>
             <p>Also, I really miss Windows 95.</p>
           </div>
