@@ -107,6 +107,10 @@ export default function Desktop() {
           }
           onClick={() => openFromIcon("why")}
         />
+      </div>
+
+      {/* Desktop Icons - Contact (Separated) */}
+      <div className="absolute bottom-24 left-4 flex flex-col gap-6 z-0">
         <DesktopIcon
           label="Contact"
           icon={
