@@ -154,21 +154,21 @@ export default function Desktop() {
                   <Briefcase className="w-3 h-3 inline mr-1" />Projects
                 </div>
                 <button
-                  onClick={() => bringToFront("projects")}
+                  onClick={() => window.open("https://neurotraits.trymosaic.co", "_blank")}
                   className="w-full text-left px-6 py-2 text-xs hover:bg-win-blue hover:text-white border-b border-gray-100"
                   data-testid="mycomputer-neurotraits"
                 >
                   NeuroTraits
                 </button>
                 <button
-                  onClick={() => bringToFront("projects")}
+                  onClick={() => window.open("https://focus.trymosaic.co", "_blank")}
                   className="w-full text-left px-6 py-2 text-xs hover:bg-win-blue hover:text-white border-b border-gray-100"
                   data-testid="mycomputer-pomadeaux"
                 >
                   Mosaic Focus
                 </button>
                 <button
-                  onClick={() => bringToFront("projects")}
+                  onClick={() => window.open("https://trymosaic.co", "_blank")}
                   className="w-full text-left px-6 py-2 text-xs hover:bg-win-blue hover:text-white border-b border-gray-100"
                   data-testid="mycomputer-mosaic"
                 >
