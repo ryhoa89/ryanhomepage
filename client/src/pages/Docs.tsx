@@ -151,6 +151,46 @@ This requires discipline. It requires that your team can think independently. It
 But when it works, it's remarkable. Your team isn't limited by geography. You can hire the best person for the job, regardless of where they live. You can work during your peak hours, not when the office says you should.
 
 The companies that figured this out—really figured it out—have enormous advantages. They don't compete for talent in one city. They compete globally.`
+  },
+  {
+    id: 'hard-startups',
+    title: 'Hard Startups',
+    date: 'December 2024',
+    excerpt: 'It\'s easier to succeed with a hard startup than an easy one.',
+    content: `Hard Startups
+
+I have a theory. It's not unique to me, and it might seem counterintuitive.(in fact sam altman came up with it first)
+But I think it's easier to succeed with a hard startup than an easy one.
+
+You see this a lot in the neurodiversity tech space
+Easy startups build tools that measure inclusion.
+Hard startups build systems that create it.
+
+Take workplace adjustments.
+The hard part isn't making recommendations or building another "passport" tool.
+It's asking: what if inclusion was infrastructure, embedded into workflows, data, and accountability, not tacked on as a policy or a PDF?
+
+For someone with ADHD, that difference is everything.
+One system leaves you chasing emails and broken promises.
+The other quietly makes support predictable, consistent, and real.
+
+Compliance. Consistency. Culture change. Psychological safety at scale.
+
+Tech ≠ trust.
+You can't fix a culture of fear or micromanagement with software.
+
+In a healthy culture, shared to-do lists = transparency, accountability, and dopamine hits.
+In a toxic one, they = micromanagement and anxiety.
+
+It's not an easy sell.
+HR buyers want simplicity. Managers want speed. Investors want ARR.
+(Side note: a huge thank you to the HR teams already walking this road with us, showing what leadership in inclusion really looks like.)
+
+Hard problems attract serious people.
+And serious people build infrastructure that lasts.
+
+That's what we're doing at TryMosaic, building inclusion infrastructure.
+And it's already working. Our pilots show that when adjustments are systematic, everyone wins: employees, managers, and HR alike.`
   }
 ];
 
