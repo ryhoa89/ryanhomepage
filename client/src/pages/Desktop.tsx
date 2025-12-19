@@ -135,19 +135,29 @@ export default function Desktop() {
               <div>
                 <h3 className="text-lg font-bold font-sans m-0">Ryan Hoare</h3>
                 <p className="text-sm mt-1 italic">
-                  Builder, Infrastructure, Human.
+                  Builder by nature. Infrastructure by inclination.
                 </p>
               </div>
             </div>
+            <h4 className="font-bold mb-2">About</h4>
             <p className="mb-4">
-              I build software infrastructure. I prefer simple systems that
-              actually work over complex ones that promise to.
+              I build systems that help organisations deal with reality rather than pretend it is simpler than it is.
             </p>
             <p className="mb-4">
-              Currently based in London. I enjoy calm technology, reliable
-              tools, and solving boring problems well.
+              Most of my work sits at the junction of software, policy, and human behaviour. I focus on the parts that are usually hand-waved away: edge cases, accountability, compliance, trust, and what happens when a process meets a tired person on a bad day.
             </p>
-            <p>I write plain English and Code. Usually in that order.</p>
+            <p className="mb-4">
+              I'm the founder of TryMosaic, a platform that turns reasonable adjustments from an awkward conversation into dependable infrastructure. The work is grounded in lived experience, and shaped by time spent inside large institutions where good intentions routinely fail without systems to support them.
+            </p>
+            <p className="mb-4">
+              I'm sceptical of novelty for its own sake. I care about things that work quietly, scale without drama, and stand up to scrutiny. My default move is to reduce complexity, make responsibility explicit, and design for the person who has to use the system when they are already under pressure.
+            </p>
+            <p className="mb-4">
+              I write in plain English because clarity is a form of respect. I build software the same way.
+            </p>
+            <p>
+              I'm based in Bristol, and I'm a parent to a wonderful child.
+            </p>
           </div>
         </WindowFrame>
       )}
