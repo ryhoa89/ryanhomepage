@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 export default function Desktop() {
   const [activeWindow, setActiveWindow] = useState<string | null>("about");
   const [openWindows, setOpenWindows] = useState<Record<string, boolean>>({
+    mycomputer: false,
     about: true,
     projects: true,
     why: false,
@@ -25,6 +26,7 @@ export default function Desktop() {
   const [minimizedWindows, setMinimizedWindows] = useState<
     Record<string, boolean>
   >({
+    mycomputer: false,
     about: false,
     projects: false,
     why: false,
@@ -72,7 +74,7 @@ export default function Desktop() {
           icon={
             <Monitor className="w-10 h-10 text-win-gray-light fill-win-teal stroke-[1.5]" />
           }
-          onClick={() => {}}
+          onClick={() => openFromIcon("mycomputer")}
         />
         <DesktopIcon
           label="About Ryan"
@@ -112,6 +114,95 @@ export default function Desktop() {
       </div>
 
       {/* Windows */}
+
+      {openWindows.mycomputer && (
+        <WindowFrame
+          id="mycomputer"
+          title="My Computer"
+          initialPosition={{ x: 50, y: 40 }}
+          isActive={activeWindow === "mycomputer"}
+          onFocus={() => bringToFront("mycomputer")}
+          onClose={() => closeWindow("mycomputer")}
+          onMinimize={() => minimizeWindow("mycomputer")}
+          width="400px"
+          height="400px"
+          className={minimizedWindows.mycomputer ? "hidden" : ""}
+        >
+          <div className="flex flex-col h-full bg-white">
+            <div className="px-3 py-2 text-xs text-gray-600 border-b border-gray-200">
+              Select an item to open.
+            </div>
+            <div className="flex-1 overflow-auto">
+              <div className="space-y-0">
+                <button
+                  onClick={() => bringToFront("about")}
+                  className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="mycomputer-about"
+                >
+                  <FileText className="w-4 h-4 flex-shrink-0" />
+                  <span>About Ryan</span>
+                </button>
+                <button
+                  onClick={() => bringToFront("projects")}
+                  className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="mycomputer-projects"
+                >
+                  <Briefcase className="w-4 h-4 flex-shrink-0" />
+                  <span>Projects</span>
+                </button>
+                <div className="px-3 py-2 text-xs text-gray-600 font-bold">
+                  <Briefcase className="w-3 h-3 inline mr-1" />Projects
+                </div>
+                <button
+                  onClick={() => bringToFront("projects")}
+                  className="w-full text-left px-6 py-2 text-xs hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="mycomputer-neurotraits"
+                >
+                  NeuroTraits
+                </button>
+                <button
+                  onClick={() => bringToFront("projects")}
+                  className="w-full text-left px-6 py-2 text-xs hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="mycomputer-pomadeaux"
+                >
+                  Mosaic Focus
+                </button>
+                <button
+                  onClick={() => bringToFront("projects")}
+                  className="w-full text-left px-6 py-2 text-xs hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="mycomputer-mosaic"
+                >
+                  Mosaic
+                </button>
+                <button
+                  onClick={() => bringToFront("docs")}
+                  className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="mycomputer-essays"
+                >
+                  <FileText className="w-4 h-4 flex-shrink-0" />
+                  <span>Essays</span>
+                </button>
+                <button
+                  onClick={() => bringToFront("why")}
+                  className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="mycomputer-why"
+                >
+                  <FileText className="w-4 h-4 flex-shrink-0" />
+                  <span>Why This Exists.txt</span>
+                </button>
+                <button
+                  onClick={() => bringToFront("contact")}
+                  className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white"
+                  data-testid="mycomputer-contact"
+                >
+                  <FileText className="w-4 h-4 flex-shrink-0" />
+                  <span>Contact</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </WindowFrame>
+      )}
 
       {openWindows.about && (
         <WindowFrame
@@ -355,17 +446,20 @@ export default function Desktop() {
                       : "bg-win-gray border-2 border-t-white border-l-white border-b-black border-r-black shadow-[1px_1px_0_black]",
                   )}
                 >
+                  {id === "mycomputer" && <Monitor className="w-3 h-3" />}
                   {id === "about" && <User className="w-3 h-3" />}
                   {id === "projects" && <Briefcase className="w-3 h-3" />}
                   {id === "docs" && <FileText className="w-3 h-3" />}
                   {id === "why" && <Terminal className="w-3 h-3" />}
                   {id === "contact" && <Mail className="w-3 h-3" />}
                   <span className="capitalize truncate">
-                    {id === "why"
-                      ? "Why This Exists.txt"
-                      : id === "docs"
-                        ? "Essays"
-                        : id}
+                    {id === "mycomputer"
+                      ? "My Computer"
+                      : id === "why"
+                        ? "Why This Exists.txt"
+                        : id === "docs"
+                          ? "Essays"
+                          : id}
                   </span>
                 </button>
               ),
