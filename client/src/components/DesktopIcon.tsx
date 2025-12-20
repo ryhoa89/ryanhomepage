@@ -13,7 +13,7 @@ export function DesktopIcon({ label, icon, onClick, selected }: DesktopIconProps
       className="flex flex-col items-center gap-1 w-20 cursor-pointer group"
       onClick={onClick}
     >
-      <div className={`w-12 h-12 flex items-center justify-center ${selected ? 'opacity-50' : ''}`}>
+      <div className={`w-14 h-14 flex items-center justify-center ${selected ? 'opacity-50' : ''}`}>
         {icon}
       </div>
       <span className={`
