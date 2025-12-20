@@ -14,6 +14,7 @@ import {
   FileText,
   Image,
   PlayIcon,
+  Trash2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +30,7 @@ export default function Desktop() {
     textpad: false,
     photos: false,
     music: false,
+    recycle: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState<
     Record<string, boolean>
@@ -42,7 +44,9 @@ export default function Desktop() {
     textpad: false,
     photos: false,
     music: false,
+    recycle: false,
   });
+  const [selectedRecycleFile, setSelectedRecycleFile] = useState<string | null>(null);
 
   const bringToFront = (id: string) => {
     setActiveWindow(id);
@@ -148,11 +152,22 @@ export default function Desktop() {
       {/* Easter Egg - Center */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
         <DesktopIcon
-          label="music.png"
+          label="mosaic.png"
           icon={
-            <img src="/mosaic-logo.png" alt="music.png" className="w-14 h-14 object-contain" />
+            <img src="/mosaic-logo.png" alt="mosaic.png" className="w-14 h-14 object-contain" />
           }
           onClick={() => openFromIcon("music")}
+        />
+      </div>
+
+      {/* Recycling Bin - Bottom Left */}
+      <div className="absolute bottom-32 left-4 z-0">
+        <DesktopIcon
+          label="Recycle Bin"
+          icon={
+            <Trash2 className="w-14 h-14 text-gray-600 fill-gray-400 stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("recycle")}
         />
       </div>
 
@@ -559,7 +574,7 @@ export default function Desktop() {
       {openWindows.music && (
         <WindowFrame
           id="music"
-          title="music.png"
+          title="mosaic.png"
           initialPosition={{ x: 50, y: 50 }}
           isActive={activeWindow === "music"}
           onFocus={() => bringToFront("music")}
@@ -571,6 +586,104 @@ export default function Desktop() {
         >
           <div className="w-full h-full bg-win-teal flex items-center justify-center p-4">
             <img src="/mosaic-logo.png" alt="Mosaic Logo" className="w-full h-full object-contain" />
+          </div>
+        </WindowFrame>
+      )}
+
+      {openWindows.recycle && (
+        <WindowFrame
+          id="recycle"
+          title="Recycle Bin"
+          initialPosition={{ x: 100, y: 100 }}
+          isActive={activeWindow === "recycle"}
+          onFocus={() => bringToFront("recycle")}
+          onClose={() => closeWindow("recycle")}
+          onMinimize={() => minimizeWindow("recycle")}
+          width="500px"
+          height="400px"
+          className={minimizedWindows.recycle ? "hidden" : ""}
+        >
+          <div className="flex flex-col h-full bg-white">
+            <div className="bg-win-gray px-2 py-1 border-b border-win-gray-dark font-bold text-xs">
+              Recycle Bin
+            </div>
+            <div className="flex-1 overflow-auto p-2">
+              {selectedRecycleFile ? (
+                <div className="space-y-2">
+                  <button
+                    onClick={() => setSelectedRecycleFile(null)}
+                    className="text-xs text-blue-600 underline hover:text-blue-800"
+                  >
+                    ← Back
+                  </button>
+                  {selectedRecycleFile === "rickroll" && (
+                    <div className="text-center py-8">
+                      <div className="text-2xl mb-4">🎬</div>
+                      <p className="font-bold text-sm mb-2">Never Gonna Give You Up</p>
+                      <p className="text-xs text-gray-600 mb-4">This is as far as you get!</p>
+                      <a 
+                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-blue-600 underline hover:text-blue-800"
+                      >
+                        Click here to continue...
+                      </a>
+                    </div>
+                  )}
+                  {selectedRecycleFile === "meme" && (
+                    <div className="text-center py-8">
+                      <div className="text-5xl mb-4">😂</div>
+                      <p className="font-bold text-sm mb-4">doge.jpg</p>
+                      <div className="bg-yellow-100 border-2 border-dashed border-yellow-600 p-4 rounded text-center">
+                        <p className="text-sm">wow</p>
+                        <p className="text-sm">much delete</p>
+                        <p className="text-sm">so trash</p>
+                        <p className="text-sm">very recovery</p>
+                      </div>
+                    </div>
+                  )}
+                  {selectedRecycleFile === "secret" && (
+                    <div className="text-center py-8">
+                      <div className="text-4xl mb-4">🤫</div>
+                      <p className="font-bold text-sm mb-4">top_secret.txt</p>
+                      <p className="text-xs text-gray-600 mb-2">You found the secret file!</p>
+                      <p className="text-xs italic text-gray-500">This space left intentionally empty.</p>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="grid grid-cols-3 gap-4">
+                  <button
+                    onClick={() => setSelectedRecycleFile("rickroll")}
+                    className="p-4 border border-gray-300 hover:bg-gray-100 rounded text-center"
+                    data-testid="recycle-rickroll"
+                  >
+                    <div className="text-3xl mb-1">🎵</div>
+                    <p className="text-xs font-bold truncate">music.mp4</p>
+                    <p className="text-xs text-gray-500">2.3 MB</p>
+                  </button>
+                  <button
+                    onClick={() => setSelectedRecycleFile("meme")}
+                    className="p-4 border border-gray-300 hover:bg-gray-100 rounded text-center"
+                    data-testid="recycle-meme"
+                  >
+                    <div className="text-3xl mb-1">🐕</div>
+                    <p className="text-xs font-bold truncate">doge.jpg</p>
+                    <p className="text-xs text-gray-500">1.1 MB</p>
+                  </button>
+                  <button
+                    onClick={() => setSelectedRecycleFile("secret")}
+                    className="p-4 border border-gray-300 hover:bg-gray-100 rounded text-center"
+                    data-testid="recycle-secret"
+                  >
+                    <div className="text-3xl mb-1">📄</div>
+                    <p className="text-xs font-bold truncate">top_secret.txt</p>
+                    <p className="text-xs text-gray-500">512 KB</p>
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </WindowFrame>
       )}
@@ -609,6 +722,7 @@ export default function Desktop() {
                   {id === "why" && <Terminal className="w-3 h-3" />}
                   {id === "contact" && <Mail className="w-3 h-3" />}
                   {id === "music" && <Image className="w-3 h-3" />}
+                  {id === "recycle" && <Trash2 className="w-3 h-3" />}
                   <span className="capitalize truncate">
                     {id === "mycomputer"
                       ? "My Computer"
@@ -621,8 +735,10 @@ export default function Desktop() {
                             : id === "photos"
                               ? "My Photos"
                               : id === "music"
-                                ? "music.png"
-                                : id}
+                                ? "mosaic.png"
+                                : id === "recycle"
+                                  ? "Recycle Bin"
+                                  : id}
                   </span>
                 </button>
               ),
