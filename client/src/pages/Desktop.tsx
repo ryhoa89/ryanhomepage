@@ -98,7 +98,7 @@ export default function Desktop() {
             onClick={() => openFromIcon("about")}
           />
           <DesktopIcon
-            label="Schedule a Call"
+            label="Calender"
             icon={
               <Calendar className="w-14 h-14 text-green-200 fill-green-600 stroke-[1.5]" />
             }
@@ -171,11 +171,11 @@ export default function Desktop() {
       {/* Easter Egg - Center */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
         <DesktopIcon
-          label="music.png"
+          label="mosaic.png"
           icon={
-            <img src="/mosaic-logo.png" alt="music.png" className="w-14 h-14 object-contain" />
+            <img src="/mosaic-logo.png" alt="mosaic.png" className="w-14 h-14 object-contain" />
           }
-          onClick={() => openFromIcon("music")}
+          onClick={() => openFromIcon("mosaic")}
         />
       </div>
 
