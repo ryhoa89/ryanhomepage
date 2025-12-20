@@ -116,13 +116,6 @@ export default function Desktop() {
           }
           onClick={() => openFromIcon("why")}
         />
-        <DesktopIcon
-          label="Stuff I Featured In"
-          icon={
-            <HardDrive className="w-14 h-14 text-purple-200 fill-purple-600 stroke-[1.5]" />
-          }
-          onClick={() => openFromIcon("featured")}
-        />
       </div>
 
       {/* Desktop Icons - Contact (Separated) */}
@@ -634,6 +627,11 @@ export default function Desktop() {
           </div>
         </WindowFrame>
       )}
+
+      {/* Featured Content - Bottom Right */}
+      <div className="absolute bottom-[28px] right-4 w-32 h-32 cursor-pointer hover:opacity-80 transition-opacity z-50" onClick={() => openFromIcon("featured")} data-testid="featured-corner-button">
+        <img src="/favicon.png" alt="Stuff I Featured In" className="w-full h-full object-cover border-2 border-win-gray-dark shadow-lg" />
+      </div>
 
       {/* Taskbar */}
       <div className="absolute bottom-0 left-0 w-full h-[28px] bg-win-gray border-t border-win-white flex items-center px-1 z-[100] shadow-[0_-1px_0_#808080]">
