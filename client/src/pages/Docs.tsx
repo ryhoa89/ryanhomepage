@@ -262,6 +262,27 @@ ADHD Creativity.
 Autistic Precision.
 
 Now Dyspraxic Grit.`
+  },
+  {
+    id: 'abundance-scales-better',
+    title: 'Abundance Scales Better',
+    date: 'December 2025',
+    excerpt: 'The pie is already big enough.',
+    content: `Abundance Scales Better
+
+Something I've learned recently, people get tense when they think the world runs on scarcity.
+
+I've never bought that. Not in neuroinclusion. Not in tech. Not in the messy real world where people just want work to be fair and humane.
+
+I'm trying to build TryMosaic with an abundance mindset. If someone is doing good work in this space, I don't see a rival. I see someone I can build with. The pie is already big enough. The need is enormous. The demand is growing. The stakes are real.
+
+So if you're trying to make workplaces better for every kind of mind, I'm up for collaborating. Sharing ideas. Testing things together. Creating something stronger than any of us could manage alone.
+
+TryMosaic does one thing really well. We make reasonable adjustments easy. Employees share what they need. Managers know what to do. HR gets a clean, auditable record. No fluff. No chaos. No guesswork.
+
+If you're an employer or consultant who wants to run a pilot, partner with us, or explore where our work overlaps, get in touch.
+
+Abundance scales better when more people join in.`
   }
 ];
 
