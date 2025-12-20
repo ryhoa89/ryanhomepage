@@ -29,6 +29,7 @@ export default function Desktop() {
     textpad: false,
     photos: false,
     music: false,
+    featured: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState<
     Record<string, boolean>
@@ -42,6 +43,7 @@ export default function Desktop() {
     textpad: false,
     photos: false,
     music: false,
+    featured: false,
   });
 
   const bringToFront = (id: string) => {
@@ -113,6 +115,13 @@ export default function Desktop() {
             <Terminal className="w-14 h-14 text-gray-200 fill-black stroke-[1.5]" />
           }
           onClick={() => openFromIcon("why")}
+        />
+        <DesktopIcon
+          label="Stuff I Featured In"
+          icon={
+            <HardDrive className="w-14 h-14 text-purple-200 fill-purple-600 stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("featured")}
         />
       </div>
 
@@ -575,6 +584,57 @@ export default function Desktop() {
         </WindowFrame>
       )}
 
+      {openWindows.featured && (
+        <WindowFrame
+          id="featured"
+          title="Stuff I Featured In"
+          initialPosition={{ x: 70, y: 70 }}
+          isActive={activeWindow === "featured"}
+          onFocus={() => bringToFront("featured")}
+          onClose={() => closeWindow("featured")}
+          onMinimize={() => minimizeWindow("featured")}
+          width="500px"
+          height="300px"
+          className={minimizedWindows.featured ? "hidden" : ""}
+        >
+          <div className="flex flex-col h-full bg-white">
+            <div className="bg-win-gray px-3 py-2 border-b border-win-gray-dark font-bold text-sm">
+              Folder
+            </div>
+            <div className="flex-1 overflow-auto">
+              <div className="space-y-0">
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://technation.io/creo-startups-to-watch/",
+                      "_blank"
+                    )
+                  }
+                  className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="featured-technation"
+                >
+                  <FileText className="w-4 h-4 flex-shrink-0" />
+                  <span>TechNation - Creo Startups to Watch</span>
+                </button>
+                <button
+                  onClick={() =>
+                    window.open(
+                      "https://info.microsoft.com/EM-InnAI-WHTPP-FY26-12Dec-12-The-Future-Proof-AI-Framework-SRGCM15729_LP01-Registration---Form-in-Body.html",
+                      "_blank"
+                    )
+                  }
+                  className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                  data-testid="featured-microsoft"
+                >
+                  <FileText className="w-4 h-4 flex-shrink-0" />
+                  <span>Microsoft - Future-Proof AI Framework</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </WindowFrame>
+      )}
+
       {/* Taskbar */}
       <div className="absolute bottom-0 left-0 w-full h-[28px] bg-win-gray border-t border-win-white flex items-center px-1 z-[100] shadow-[0_-1px_0_#808080]">
         <button className="flex items-center gap-1 px-1 h-[22px] border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-sm shadow-[1px_1px_0_black]">
@@ -609,6 +669,7 @@ export default function Desktop() {
                   {id === "why" && <Terminal className="w-3 h-3" />}
                   {id === "contact" && <Mail className="w-3 h-3" />}
                   {id === "music" && <Image className="w-3 h-3" />}
+                  {id === "featured" && <HardDrive className="w-3 h-3" />}
                   <span className="capitalize truncate">
                     {id === "mycomputer"
                       ? "My Computer"
@@ -622,7 +683,9 @@ export default function Desktop() {
                               ? "My Photos"
                               : id === "music"
                                 ? "music.png"
-                                : id}
+                                : id === "featured"
+                                  ? "Stuff I Featured In"
+                                  : id}
                   </span>
                 </button>
               ),
