@@ -116,13 +116,6 @@ export default function Desktop() {
           }
           onClick={() => openFromIcon("why")}
         />
-        <DesktopIcon
-          label="Stuff I Featured In"
-          icon={
-            <HardDrive className="w-14 h-14 text-purple-200 fill-purple-600 stroke-[1.5]" />
-          }
-          onClick={() => openFromIcon("featured")}
-        />
       </div>
 
       {/* Desktop Icons - Contact (Separated) */}
@@ -151,6 +144,17 @@ export default function Desktop() {
             <FileText className="w-14 h-14 text-gray-300 fill-gray-400 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("textpad")}
+        />
+      </div>
+
+      {/* Desktop Icons - Bottom Right */}
+      <div className="absolute bottom-24 right-4 flex flex-col gap-6 z-0">
+        <DesktopIcon
+          label="Stuff I Featured In"
+          icon={
+            <HardDrive className="w-14 h-14 text-purple-200 fill-purple-600 stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("featured")}
         />
       </div>
 
