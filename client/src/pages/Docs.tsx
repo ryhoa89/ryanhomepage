@@ -14,7 +14,7 @@ const DOCS: DocEntry[] = [
   {
     id: 'play-to-win',
     title: 'Why we Play to win',
-    date: 'December 2024',
+    date: 'September 2025',
     excerpt: 'Because the stakes are too high not to win.',
     content: `Why we Play to win
 
@@ -68,7 +68,7 @@ Mosaic plays to win because it must.`
   {
     id: 'why-fair-isnt-fair',
     title: 'Why \'Fair\' Isn\'t Fair',
-    date: 'December 2024',
+    date: 'November 2025',
     excerpt: 'Fairness smooths the world, but it never changes the game.',
     content: `Why 'Fair' Isn't Fair
 
@@ -136,7 +136,7 @@ Because fairness without justice isn't fair at all.`
   {
     id: 'on-remote-work',
     title: 'On Remote Work',
-    date: 'October 2024',
+    date: 'October 2025',
     excerpt: 'Building teams across time zones.',
     content: `On Remote Work
 
@@ -149,13 +149,13 @@ Good remote work is asynchronous first. Write things down. Document decisions. T
 This requires discipline. It requires that your team can think independently. It requires clear goals and clear communication.
 
 But when it works, it's remarkable. Your team isn't limited by geography. You can hire the best person for the job, regardless of where they live. You can work during your peak hours, not when the office says you should.
-
+2024
 The companies that figured this out—really figured it out—have enormous advantages. They don't compete for talent in one city. They compete globally.`
   },
   {
     id: 'hard-startups',
     title: 'Hard Startups',
-    date: 'December 2024',
+    date: 'October 2025',
     excerpt: 'It\'s easier to succeed with a hard startup than an easy one.',
     content: `Hard Startups
 

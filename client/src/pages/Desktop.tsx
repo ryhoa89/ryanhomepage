@@ -85,7 +85,7 @@ export default function Desktop() {
           onClick={() => openFromIcon("mycomputer")}
         />
         <DesktopIcon
-          label="About Ryan"
+          label="About Me"
           icon={
             <User className="w-14 h-14 text-yellow-200 fill-yellow-600 stroke-[1.5]" />
           }
@@ -170,7 +170,7 @@ export default function Desktop() {
                   data-testid="mycomputer-about"
                 >
                   <FileText className="w-4 h-4 flex-shrink-0" />
-                  <span>About Ryan</span>
+                  <span>About Me</span>
                 </button>
                 <button
                   onClick={() => bringToFront("projects")}
@@ -250,7 +250,7 @@ export default function Desktop() {
       {openWindows.about && (
         <WindowFrame
           id="about"
-          title="About Ryan"
+          title="About Me"
           initialPosition={{ x: 40, y: 30 }}
           isActive={activeWindow === "about"}
           onFocus={() => bringToFront("about")}
