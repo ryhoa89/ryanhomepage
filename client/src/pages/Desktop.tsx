@@ -116,6 +116,13 @@ export default function Desktop() {
           }
           onClick={() => openFromIcon("why")}
         />
+        <DesktopIcon
+          label="Stuff I Featured In"
+          icon={
+            <HardDrive className="w-14 h-14 text-purple-200 fill-purple-600 stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("featured")}
+        />
       </div>
 
       {/* Desktop Icons - Contact (Separated) */}
@@ -150,9 +157,9 @@ export default function Desktop() {
       {/* Easter Egg - Center */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
         <DesktopIcon
-          label="mosaic.png"
+          label="music.png"
           icon={
-            <img src="/mosaic-logo.png" alt="mosaic.png" className="w-14 h-14 object-contain" />
+            <img src="/mosaic-logo.png" alt="music.png" className="w-14 h-14 object-contain" />
           }
           onClick={() => openFromIcon("music")}
         />
@@ -561,7 +568,7 @@ export default function Desktop() {
       {openWindows.music && (
         <WindowFrame
           id="music"
-          title="mosaic.png"
+          title="music.png"
           initialPosition={{ x: 50, y: 50 }}
           isActive={activeWindow === "music"}
           onFocus={() => bringToFront("music")}
@@ -628,12 +635,6 @@ export default function Desktop() {
         </WindowFrame>
       )}
 
-      {/* Featured Content - Bottom Right */}
-      <div className="absolute bottom-[36px] right-4 flex flex-col items-center gap-1 z-50 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => openFromIcon("featured")} data-testid="featured-corner-button">
-        <img src="/folder-icon.png" alt="Stuff I Featured In" className="w-16 h-16 object-contain" />
-        <span className="text-xs text-center leading-tight max-w-[70px] text-black select-none">Featured</span>
-      </div>
-
       {/* Taskbar */}
       <div className="absolute bottom-0 left-0 w-full h-[28px] bg-win-gray border-t border-win-white flex items-center px-1 z-[100] shadow-[0_-1px_0_#808080]">
         <button className="flex items-center gap-1 px-1 h-[22px] border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-sm shadow-[1px_1px_0_black]">
@@ -681,7 +682,7 @@ export default function Desktop() {
                             : id === "photos"
                               ? "My Photos"
                               : id === "music"
-                                ? "mosaic.png"
+                                ? "music.png"
                                 : id === "featured"
                                   ? "Stuff I Featured In"
                                   : id}
