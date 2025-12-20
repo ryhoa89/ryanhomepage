@@ -28,6 +28,7 @@ export default function Desktop() {
     docs: false,
     textpad: false,
     photos: false,
+    music: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState<
     Record<string, boolean>
@@ -40,6 +41,7 @@ export default function Desktop() {
     docs: false,
     textpad: false,
     photos: false,
+    music: false,
   });
 
   const bringToFront = (id: string) => {
@@ -140,6 +142,17 @@ export default function Desktop() {
             <FileText className="w-14 h-14 text-gray-300 fill-gray-400 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("textpad")}
+        />
+      </div>
+
+      {/* Easter Egg - Center */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
+        <DesktopIcon
+          label="music.png"
+          icon={
+            <img src="/mosaic-logo.png" alt="music.png" className="w-14 h-14 object-contain" />
+          }
+          onClick={() => openFromIcon("music")}
         />
       </div>
 
@@ -543,6 +556,25 @@ export default function Desktop() {
         </WindowFrame>
       )}
 
+      {openWindows.music && (
+        <WindowFrame
+          id="music"
+          title="music.png"
+          initialPosition={{ x: 50, y: 50 }}
+          isActive={activeWindow === "music"}
+          onFocus={() => bringToFront("music")}
+          onClose={() => closeWindow("music")}
+          onMinimize={() => minimizeWindow("music")}
+          width="400px"
+          height="400px"
+          className={minimizedWindows.music ? "hidden" : ""}
+        >
+          <div className="w-full h-full bg-win-teal flex items-center justify-center p-4">
+            <img src="/mosaic-logo.png" alt="Mosaic Logo" className="w-full h-full object-contain" />
+          </div>
+        </WindowFrame>
+      )}
+
       {/* Taskbar */}
       <div className="absolute bottom-0 left-0 w-full h-[28px] bg-win-gray border-t border-win-white flex items-center px-1 z-[100] shadow-[0_-1px_0_#808080]">
         <button className="flex items-center gap-1 px-1 h-[22px] border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-sm shadow-[1px_1px_0_black]">
@@ -576,6 +608,7 @@ export default function Desktop() {
                   {id === "photos" && <Image className="w-3 h-3" />}
                   {id === "why" && <Terminal className="w-3 h-3" />}
                   {id === "contact" && <Mail className="w-3 h-3" />}
+                  {id === "music" && <Image className="w-3 h-3" />}
                   <span className="capitalize truncate">
                     {id === "mycomputer"
                       ? "My Computer"
@@ -587,7 +620,9 @@ export default function Desktop() {
                             ? "Text Pad.txt"
                             : id === "photos"
                               ? "My Photos"
-                              : id}
+                              : id === "music"
+                                ? "music.png"
+                                : id}
                   </span>
                 </button>
               ),
