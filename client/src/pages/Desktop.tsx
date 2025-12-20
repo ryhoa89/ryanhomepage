@@ -89,20 +89,22 @@ export default function Desktop() {
           }
           onClick={() => openFromIcon("mycomputer")}
         />
-        <DesktopIcon
-          label="About Me"
-          icon={
-            <User className="w-14 h-14 text-yellow-200 fill-yellow-600 stroke-[1.5]" />
-          }
-          onClick={() => openFromIcon("about")}
-        />
-        <DesktopIcon
-          label="Schedule a Call"
-          icon={
-            <Calendar className="w-14 h-14 text-green-200 fill-green-600 stroke-[1.5]" />
-          }
-          onClick={() => window.open("https://calendly.com/hello-trymosaic/30min", "_blank")}
-        />
+        <div className="flex gap-6">
+          <DesktopIcon
+            label="About Me"
+            icon={
+              <User className="w-14 h-14 text-yellow-200 fill-yellow-600 stroke-[1.5]" />
+            }
+            onClick={() => openFromIcon("about")}
+          />
+          <DesktopIcon
+            label="Schedule a Call"
+            icon={
+              <Calendar className="w-14 h-14 text-green-200 fill-green-600 stroke-[1.5]" />
+            }
+            onClick={() => window.open("https://calendly.com/hello-trymosaic/30min", "_blank")}
+          />
+        </div>
         <DesktopIcon
           label="Projects"
           icon={
