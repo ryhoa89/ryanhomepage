@@ -14,6 +14,7 @@ import {
   FileText,
   Image,
   PlayIcon,
+  Calendar,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -96,6 +97,13 @@ export default function Desktop() {
           onClick={() => openFromIcon("about")}
         />
         <DesktopIcon
+          label="Schedule a Call"
+          icon={
+            <Calendar className="w-14 h-14 text-green-200 fill-green-600 stroke-[1.5]" />
+          }
+          onClick={() => window.open("https://calendly.com/hello-trymosaic/30min", "_blank")}
+        />
+        <DesktopIcon
           label="Projects"
           icon={
             <Briefcase className="w-14 h-14 text-blue-200 fill-blue-600 stroke-[1.5]" />
@@ -134,7 +142,7 @@ export default function Desktop() {
         <DesktopIcon
           label="My Photos"
           icon={
-            <Image className="w-14 h-14 text-blue-300 fill-blue-500 stroke-[1.5]" />
+            <Image className="w-14 h-14 text-white fill-white/20 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("photos")}
         />
