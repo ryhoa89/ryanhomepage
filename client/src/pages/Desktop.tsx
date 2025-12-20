@@ -81,26 +81,26 @@ export default function Desktop() {
   return (
     <div className="w-full h-screen bg-win-teal relative overflow-hidden select-none p-4 font-sans text-sm">
       {/* Desktop Icons - Left */}
-      <div className="absolute top-4 left-4 flex flex-col gap-6 z-0">
+      <div className="absolute top-4 left-4 flex flex-col gap-5 z-0">
         <DesktopIcon
           label="My Computer"
           icon={
-            <Monitor className="w-14 h-14 text-win-gray-light fill-win-teal stroke-[1.5]" />
+            <Monitor className="w-10 h-10 text-win-gray-light fill-win-teal stroke-[1.5]" />
           }
           onClick={() => openFromIcon("mycomputer")}
         />
-        <div className="flex gap-6">
+        <div className="flex gap-5">
           <DesktopIcon
             label="About Me"
             icon={
-              <User className="w-14 h-14 text-yellow-200 fill-yellow-600 stroke-[1.5]" />
+              <User className="w-10 h-10 text-yellow-200 fill-yellow-600 stroke-[1.5]" />
             }
             onClick={() => openFromIcon("about")}
           />
           <DesktopIcon
             label="Calender"
             icon={
-              <Calendar className="w-14 h-14 text-green-200 fill-green-600 stroke-[1.5]" />
+              <Calendar className="w-10 h-10 text-green-200 fill-green-600 stroke-[1.5]" />
             }
             onClick={() => window.open("https://calendly.com/hello-trymosaic/30min", "_blank")}
           />
@@ -108,61 +108,61 @@ export default function Desktop() {
         <DesktopIcon
           label="Projects"
           icon={
-            <Briefcase className="w-14 h-14 text-blue-200 fill-blue-600 stroke-[1.5]" />
+            <Briefcase className="w-10 h-10 text-blue-200 fill-blue-600 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("projects")}
         />
         <DesktopIcon
           label="Essays"
           icon={
-            <FileText className="w-14 h-14 text-orange-200 fill-orange-600 stroke-[1.5]" />
+            <FileText className="w-10 h-10 text-orange-200 fill-orange-600 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("docs")}
         />
         <DesktopIcon
           label="Why This Exists"
           icon={
-            <Terminal className="w-14 h-14 text-gray-200 fill-black stroke-[1.5]" />
+            <Terminal className="w-10 h-10 text-gray-200 fill-black stroke-[1.5]" />
           }
           onClick={() => openFromIcon("why")}
         />
       </div>
 
       {/* Desktop Icons - Contact (Separated) */}
-      <div className="absolute bottom-24 left-4 flex flex-col gap-6 z-0">
+      <div className="absolute bottom-24 left-4 flex flex-col gap-5 z-0">
         <DesktopIcon
           label="Contact"
           icon={
-            <Mail className="w-14 h-14 text-white fill-win-blue stroke-[1.5]" />
+            <Mail className="w-10 h-10 text-white fill-win-blue stroke-[1.5]" />
           }
           onClick={() => openFromIcon("contact")}
         />
       </div>
 
       {/* Desktop Icons - Right */}
-      <div className="absolute top-1/3 right-4 flex flex-col gap-6 z-0">
+      <div className="absolute top-1/3 right-4 flex flex-col gap-5 z-0">
         <DesktopIcon
           label="My Photos"
           icon={
-            <Image className="w-14 h-14 text-white fill-white/20 stroke-[1.5]" />
+            <Image className="w-10 h-10 text-white fill-white/20 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("photos")}
         />
         <DesktopIcon
           label="Text Pad.txt"
           icon={
-            <FileText className="w-14 h-14 text-gray-300 fill-gray-400 stroke-[1.5]" />
+            <FileText className="w-10 h-10 text-gray-300 fill-gray-400 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("textpad")}
         />
       </div>
 
       {/* Desktop Icons - Bottom Right */}
-      <div className="absolute bottom-24 right-4 flex flex-col gap-6 z-0">
+      <div className="absolute bottom-24 right-4 flex flex-col gap-5 z-0">
         <DesktopIcon
           label="Stuff I Featured In"
           icon={
-            <HardDrive className="w-14 h-14 text-purple-200 fill-purple-600 stroke-[1.5]" />
+            <HardDrive className="w-10 h-10 text-purple-200 fill-purple-600 stroke-[1.5]" />
           }
           onClick={() => openFromIcon("featured")}
         />
@@ -173,7 +173,7 @@ export default function Desktop() {
         <DesktopIcon
           label="mosaic.png"
           icon={
-            <img src="/mosaic-logo.png" alt="mosaic.png" className="w-14 h-14 object-contain" />
+            <img src="/mosaic-logo.png" alt="mosaic.png" className="w-10 h-10 object-contain" />
           }
           onClick={() => openFromIcon("mosaic")}
         />
