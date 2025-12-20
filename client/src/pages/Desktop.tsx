@@ -150,9 +150,9 @@ export default function Desktop() {
       {/* Easter Egg - Center */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0">
         <DesktopIcon
-          label="music.png"
+          label="mosaic.png"
           icon={
-            <img src="/mosaic-logo.png" alt="music.png" className="w-14 h-14 object-contain" />
+            <img src="/mosaic-logo.png" alt="mosaic.png" className="w-14 h-14 object-contain" />
           }
           onClick={() => openFromIcon("music")}
         />
@@ -561,7 +561,7 @@ export default function Desktop() {
       {openWindows.music && (
         <WindowFrame
           id="music"
-          title="music.png"
+          title="mosaic.png"
           initialPosition={{ x: 50, y: 50 }}
           isActive={activeWindow === "music"}
           onFocus={() => bringToFront("music")}
@@ -629,8 +629,9 @@ export default function Desktop() {
       )}
 
       {/* Featured Content - Bottom Right */}
-      <div className="absolute bottom-[28px] right-4 w-32 h-32 cursor-pointer hover:opacity-80 transition-opacity z-50" onClick={() => openFromIcon("featured")} data-testid="featured-corner-button">
-        <img src="/favicon.png" alt="Stuff I Featured In" className="w-full h-full object-cover border-2 border-win-gray-dark shadow-lg" />
+      <div className="absolute bottom-[36px] right-4 flex flex-col items-center gap-1 z-50 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => openFromIcon("featured")} data-testid="featured-corner-button">
+        <img src="/folder-icon.png" alt="Stuff I Featured In" className="w-16 h-16 object-contain" />
+        <span className="text-xs text-center leading-tight max-w-[70px] text-black select-none">Featured</span>
       </div>
 
       {/* Taskbar */}
@@ -680,7 +681,7 @@ export default function Desktop() {
                             : id === "photos"
                               ? "My Photos"
                               : id === "music"
-                                ? "music.png"
+                                ? "mosaic.png"
                                 : id === "featured"
                                   ? "Stuff I Featured In"
                                   : id}
