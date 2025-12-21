@@ -156,6 +156,10 @@ export default function Desktop() {
           }
           onClick={() => openFromIcon("contact")}
         />
+      </div>
+
+      {/* Desktop Icons - Right */}
+      <div className="absolute top-4 right-4 flex flex-col gap-3 z-0">
         <DesktopIcon
           label="Recycle Bin"
           icon={
@@ -163,10 +167,6 @@ export default function Desktop() {
           }
           onClick={() => openFromIcon("recyclebin")}
         />
-      </div>
-
-      {/* Desktop Icons - Right */}
-      <div className="absolute top-1/3 right-4 flex flex-col gap-3 z-0">
         <DesktopIcon
           label="My Photos"
           icon={
