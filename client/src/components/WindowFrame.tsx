@@ -65,6 +65,7 @@ export function WindowFrame({
           <div className="flex gap-0.5">
             <button 
               onClick={(e) => { e.stopPropagation(); onMinimize?.(); }}
+              onTouchEnd={(e) => { e.stopPropagation(); onMinimize?.(); }}
               className="win-button w-[16px] h-[14px] p-0 flex items-center justify-center active:translate-y-[1px]"
               aria-label="Minimize"
             >
@@ -79,6 +80,7 @@ export function WindowFrame({
             </button>
             <button 
               onClick={(e) => { e.stopPropagation(); onClose?.(); }}
+              onTouchEnd={(e) => { e.stopPropagation(); onClose?.(); }}
               className="win-button w-[16px] h-[14px] p-0 flex items-center justify-center active:translate-y-[1px] ml-0.5"
               aria-label="Close"
             >
