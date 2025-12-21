@@ -138,13 +138,16 @@ export default function Desktop() {
           }
           onClick={() => openFromIcon("docs")}
         />
-        <DesktopIcon
-          label="Why This Exists"
-          icon={
-            <Terminal className="w-10 h-10 text-gray-200 fill-black stroke-[1.5]" />
-          }
-          onClick={() => openFromIcon("why")}
-        />
+        <div className="flex gap-3">
+          <div className="w-[88px]"></div>
+          <DesktopIcon
+            label="Why This Exists"
+            icon={
+              <Terminal className="w-10 h-10 text-gray-200 fill-black stroke-[1.5]" />
+            }
+            onClick={() => openFromIcon("why")}
+          />
+        </div>
       </div>
 
       {/* Desktop Icons - Contact (Separated) */}
