@@ -53,6 +53,22 @@ export default function Desktop() {
     recyclebin: false,
   });
   const [openedBinFile, setOpenedBinFile] = useState<{type: 'recent' | 'archive', name: string} | null>(null);
+  const [currentTime, setCurrentTime] = useState<string>("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      const period = hours >= 12 ? "PM" : "AM";
+      const displayHours = hours % 12 || 12;
+      setCurrentTime(`${displayHours}:${minutes} ${period}`);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const bringToFront = (id: string) => {
     setActiveWindow(id);
@@ -974,7 +990,7 @@ export default function Desktop() {
 
         <div className="ml-auto border-2 border-t-gray-500 border-l-gray-500 border-b-white border-r-white px-2 py-0.5 text-xs bg-win-gray-light flex items-center gap-2 shadow-[1px_1px_0_white]">
           <div className="w-3 h-3">🔊</div>
-          <span>12:00 PM</span>
+          <span>{currentTime}</span>
         </div>
       </div>
     </div>
