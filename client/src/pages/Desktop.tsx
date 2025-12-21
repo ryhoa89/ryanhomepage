@@ -363,7 +363,7 @@ export default function Desktop() {
               than pretend it is simpler than it is.
             </p>
             <p className="mb-4">
-              Most of my work sits at the junction of software, policy, and
+              Most of my work sits at the junction of software,product, and
               human behaviour. I focus on the parts that are usually hand-waved
               away: edge cases, accountability, compliance, trust, and what
               happens when a process meets a tired person on a bad day.
