@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 
 export default function Desktop() {
   const [activeWindow, setActiveWindow] = useState<string | null>("about");
+  const [startMenuOpen, setStartMenuOpen] = useState(false);
   const [openWindows, setOpenWindows] = useState<Record<string, boolean>>({
     mycomputer: false,
     about: true,
@@ -649,9 +650,118 @@ export default function Desktop() {
         </WindowFrame>
       )}
 
+      {/* Start Menu */}
+      {startMenuOpen && (
+        <div className="absolute bottom-[28px] left-1 w-48 bg-win-gray border-2 border-t-white border-l-white border-b-black border-r-black shadow-[1px_1px_0_black,-1px_-1px_0_white] z-[110]">
+          <div className="py-1">
+            {/* Programs */}
+            <div>
+              <button className="w-full text-left px-2 py-1 text-xs flex items-center justify-between hover:bg-win-blue hover:text-white">
+                <span>Programs</span>
+                <span>▶</span>
+              </button>
+              <div className="pl-4 bg-white border-l border-gray-300">
+                <button
+                  onClick={() => {
+                    window.open("https://neurotraits.trymosaic.co", "_blank");
+                    setStartMenuOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                >
+                  NeuroTraits
+                </button>
+                <button
+                  onClick={() => {
+                    window.open("https://focus.trymosaic.co", "_blank");
+                    setStartMenuOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                >
+                  Mosaic Focus
+                </button>
+                <button
+                  onClick={() => {
+                    window.open("https://trymosaic.co", "_blank");
+                    setStartMenuOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                >
+                  Mosaic
+                </button>
+              </div>
+            </div>
+
+            <div className="h-px bg-win-gray-dark my-1 mx-1 border-t border-win-white"></div>
+
+            {/* Documents */}
+            <div>
+              <button className="w-full text-left px-2 py-1 text-xs flex items-center justify-between hover:bg-win-blue hover:text-white">
+                <span>Documents</span>
+                <span>▶</span>
+              </button>
+              <div className="pl-4 bg-white border-l border-gray-300">
+                <button
+                  onClick={() => {
+                    bringToFront("docs");
+                    setStartMenuOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                >
+                  Essays
+                </button>
+                <button
+                  onClick={() => {
+                    bringToFront("textpad");
+                    setStartMenuOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                >
+                  Text Pad
+                </button>
+                <button
+                  onClick={() => {
+                    bringToFront("featured");
+                    setStartMenuOpen(false);
+                  }}
+                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                >
+                  Stuff I Featured In
+                </button>
+              </div>
+            </div>
+
+            <div className="h-px bg-win-gray-dark my-1 mx-1 border-t border-win-white"></div>
+
+            {/* Help */}
+            <button
+              onClick={() => {
+                bringToFront("about");
+                setStartMenuOpen(false);
+              }}
+              className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+            >
+              About Me
+            </button>
+
+            <div className="h-px bg-win-gray-dark my-1 mx-1 border-t border-win-white"></div>
+
+            {/* Exit */}
+            <button
+              onClick={() => setStartMenuOpen(false)}
+              className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+            >
+              Exit
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Taskbar */}
       <div className="absolute bottom-0 left-0 w-full h-[28px] bg-win-gray border-t border-win-white flex items-center px-1 z-[100] shadow-[0_-1px_0_#808080]">
-        <button className="flex items-center gap-1 px-1 h-[22px] border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-sm shadow-[1px_1px_0_black]">
+        <button
+          onClick={() => setStartMenuOpen(!startMenuOpen)}
+          className="flex items-center gap-1 px-1 h-[22px] border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray hover:bg-win-gray-light active:border-t-black active:border-l-black active:border-b-white active:border-r-white font-bold text-sm shadow-[1px_1px_0_black]"
+        >
           <div className="w-4 h-4 bg-black/20 italic font-serif font-black text-xs flex items-center justify-center">
             W
           </div>
