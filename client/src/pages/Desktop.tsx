@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils";
 export default function Desktop() {
   const [activeWindow, setActiveWindow] = useState<string | null>("about");
   const [startMenuOpen, setStartMenuOpen] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
   const [isShutDown, setIsShutDown] = useState(false);
   const [openWindows, setOpenWindows] = useState<Record<string, boolean>>({
     mycomputer: false,
@@ -784,78 +785,94 @@ export default function Desktop() {
           <div className="py-1">
             {/* Programs */}
             <div>
-              <button className="w-full text-left px-2 py-1 text-xs flex items-center justify-between hover:bg-win-blue hover:text-white">
+              <button 
+                onClick={() => setExpandedMenu(expandedMenu === "programs" ? null : "programs")}
+                className="w-full text-left px-2 py-1 text-xs flex items-center justify-between hover:bg-win-blue hover:text-white"
+              >
                 <span>Programs</span>
-                <span>▶</span>
+                <span className={`transform transition-transform ${expandedMenu === "programs" ? "rotate-90" : ""}`}>▶</span>
               </button>
-              <div className="pl-4 bg-white border-l border-gray-300">
-                <button
-                  onClick={() => {
-                    window.open("https://neurotraits.trymosaic.co", "_blank");
-                    setStartMenuOpen(false);
-                  }}
-                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
-                >
-                  NeuroTraits
-                </button>
-                <button
-                  onClick={() => {
-                    window.open("https://focus.trymosaic.co", "_blank");
-                    setStartMenuOpen(false);
-                  }}
-                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
-                >
-                  Mosaic Focus
-                </button>
-                <button
-                  onClick={() => {
-                    window.open("https://trymosaic.co", "_blank");
-                    setStartMenuOpen(false);
-                  }}
-                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
-                >
-                  Mosaic
-                </button>
-              </div>
+              {expandedMenu === "programs" && (
+                <div className="pl-4 bg-white border-l border-gray-300">
+                  <button
+                    onClick={() => {
+                      window.open("https://neurotraits.trymosaic.co", "_blank");
+                      setStartMenuOpen(false);
+                    }}
+                    className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                    data-testid="startmenu-neurotraits"
+                  >
+                    NeuroTraits
+                  </button>
+                  <button
+                    onClick={() => {
+                      window.open("https://focus.trymosaic.co", "_blank");
+                      setStartMenuOpen(false);
+                    }}
+                    className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                    data-testid="startmenu-mosaic-focus"
+                  >
+                    Mosaic Focus
+                  </button>
+                  <button
+                    onClick={() => {
+                      window.open("https://trymosaic.co", "_blank");
+                      setStartMenuOpen(false);
+                    }}
+                    className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                    data-testid="startmenu-mosaic"
+                  >
+                    Mosaic
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="h-px bg-win-gray-dark my-1 mx-1 border-t border-win-white"></div>
 
             {/* Documents */}
             <div>
-              <button className="w-full text-left px-2 py-1 text-xs flex items-center justify-between hover:bg-win-blue hover:text-white">
+              <button 
+                onClick={() => setExpandedMenu(expandedMenu === "documents" ? null : "documents")}
+                className="w-full text-left px-2 py-1 text-xs flex items-center justify-between hover:bg-win-blue hover:text-white"
+              >
                 <span>Documents</span>
-                <span>▶</span>
+                <span className={`transform transition-transform ${expandedMenu === "documents" ? "rotate-90" : ""}`}>▶</span>
               </button>
-              <div className="pl-4 bg-white border-l border-gray-300">
-                <button
-                  onClick={() => {
-                    bringToFront("docs");
-                    setStartMenuOpen(false);
-                  }}
-                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
-                >
-                  Essays
-                </button>
-                <button
-                  onClick={() => {
-                    bringToFront("textpad");
-                    setStartMenuOpen(false);
-                  }}
-                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
-                >
-                  Text Pad
-                </button>
-                <button
-                  onClick={() => {
-                    bringToFront("featured");
-                    setStartMenuOpen(false);
-                  }}
-                  className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
-                >
-                  Stuff I Featured In
-                </button>
-              </div>
+              {expandedMenu === "documents" && (
+                <div className="pl-4 bg-white border-l border-gray-300">
+                  <button
+                    onClick={() => {
+                      bringToFront("docs");
+                      setStartMenuOpen(false);
+                    }}
+                    className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                    data-testid="startmenu-essays"
+                  >
+                    Essays
+                  </button>
+                  <button
+                    onClick={() => {
+                      bringToFront("textpad");
+                      setStartMenuOpen(false);
+                    }}
+                    className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                    data-testid="startmenu-textpad"
+                  >
+                    Text Pad
+                  </button>
+                  <button
+                    onClick={() => {
+                      bringToFront("featured");
+                      setStartMenuOpen(false);
+                    }}
+                    className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
+                    data-testid="startmenu-featured"
+                  >
+                    Stuff I Featured In
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="h-px bg-win-gray-dark my-1 mx-1 border-t border-win-white"></div>
