@@ -15,6 +15,7 @@ import {
   Image,
   PlayIcon,
   Calendar,
+  Trash2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +34,7 @@ export default function Desktop() {
     photos: false,
     music: false,
     featured: false,
+    recyclebin: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState<
     Record<string, boolean>
@@ -47,7 +49,9 @@ export default function Desktop() {
     photos: false,
     music: false,
     featured: false,
+    recyclebin: false,
   });
+  const [openedBinFile, setOpenedBinFile] = useState<{type: 'recent' | 'archive', name: string} | null>(null);
 
   const bringToFront = (id: string) => {
     setActiveWindow(id);
@@ -150,6 +154,13 @@ export default function Desktop() {
             <Mail className="w-10 h-10 text-white fill-win-blue stroke-[1.5]" />
           }
           onClick={() => openFromIcon("contact")}
+        />
+        <DesktopIcon
+          label="Recycle Bin"
+          icon={
+            <Trash2 className="w-10 h-10 text-red-300 fill-red-600 stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("recyclebin")}
         />
       </div>
 
@@ -659,6 +670,110 @@ export default function Desktop() {
                 </button>
               </div>
             </div>
+          </div>
+        </WindowFrame>
+      )}
+
+      {openWindows.recyclebin && (
+        <WindowFrame
+          id="recyclebin"
+          title="Recycle Bin"
+          initialPosition={{ x: 100, y: 100 }}
+          isActive={activeWindow === "recyclebin"}
+          onFocus={() => bringToFront("recyclebin")}
+          onClose={() => closeWindow("recyclebin")}
+          onMinimize={() => minimizeWindow("recyclebin")}
+          width="500px"
+          height="400px"
+          className={minimizedWindows.recyclebin ? "hidden" : ""}
+        >
+          <div className="flex flex-col h-full bg-white">
+            <div className="flex-1 overflow-auto">
+              {/* Recently Deleted */}
+              <div className="border-b-2 border-gray-300">
+                <div className="bg-win-gray px-3 py-2 font-bold text-xs">Recently Deleted</div>
+                <div className="space-y-0">
+                  {["usepassport_v2(final)(2).xls", "ai_summary_APPROVED_FINAL.docx", "manager_followup_notes.txt", "export_for_hr_latest_v4.csv", "adjustments_agreed_in_meeting.docx"].map((file) => (
+                    <button
+                      key={file}
+                      onClick={() => setOpenedBinFile({ type: 'recent', name: file })}
+                      className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                    >
+                      <FileText className="w-4 h-4 flex-shrink-0" />
+                      <span>{file}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Archive */}
+              <div>
+                <div className="bg-win-gray px-3 py-2 font-bold text-xs">Archive (cannot be recovered)</div>
+                <div className="space-y-0">
+                  {["ai-coach-for-employees.docx", "personalized-ai-coach-version-1.md", "pip.doc", "ai-slop.tsx", "morningroutinebuilder.py"].map((file) => (
+                    <button
+                      key={file}
+                      onClick={() => setOpenedBinFile({ type: 'archive', name: file })}
+                      className="w-full text-left px-3 py-2 text-xs flex items-center gap-2 hover:bg-win-blue hover:text-white border-b border-gray-100"
+                    >
+                      <FileText className="w-4 h-4 flex-shrink-0" />
+                      <span>{file}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </WindowFrame>
+      )}
+
+      {openedBinFile && (
+        <WindowFrame
+          id={`binfile-${openedBinFile.name}`}
+          title={openedBinFile.name}
+          initialPosition={{ x: 150, y: 150 }}
+          isActive={true}
+          onFocus={() => {}}
+          onClose={() => setOpenedBinFile(null)}
+          onMinimize={() => {}}
+          width="400px"
+          height="200px"
+        >
+          <div className="flex flex-col h-full bg-white p-4 justify-center">
+            {openedBinFile.type === 'recent' ? (
+              <>
+                <div className="text-xs text-gray-700 mb-4">
+                  {openedBinFile.name === "usepassport_v2(final)(2).xls" && "Ownership unclear. Multiple versions in circulation."}
+                  {openedBinFile.name === "ai_summary_APPROVED_FINAL.docx" && "Decisions referenced but not recorded."}
+                  {openedBinFile.name === "manager_followup_notes.txt" && "Informal agreement. No audit trail."}
+                  {openedBinFile.name === "export_for_hr_latest_v4.csv" && "Manual workaround adopted."}
+                  {openedBinFile.name === "adjustments_agreed_in_meeting.docx" && "Ownership unclear. Multiple versions in circulation."}
+                </div>
+                <button
+                  onClick={() => setOpenedBinFile(null)}
+                  className="self-start px-3 py-1 border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray text-xs hover:bg-win-gray-light active:border-t-black active:border-l-black active:border-b-white active:border-r-white"
+                >
+                  Close
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="text-xs font-bold mb-2">Archived</div>
+                <div className="text-xs text-gray-700 mb-4">
+                  {openedBinFile.name === "ai-coach-for-employees.docx" && "Coaching requires trust, context, and accountability."}
+                  {openedBinFile.name === "personalized-ai-coach-version-1.md" && "Personalisation implied authority without consent."}
+                  {openedBinFile.name === "pip.doc" && "Process followed. Care absent."}
+                  {openedBinFile.name === "ai-slop.tsx" && "Output increased activity without increasing understanding."}
+                  {openedBinFile.name === "morningroutinebuilder.py" && "Optimised behaviour without asking why."}
+                </div>
+                <button
+                  onClick={() => setOpenedBinFile(null)}
+                  className="self-start px-3 py-1 border-2 border-t-white border-l-white border-b-black border-r-black bg-win-gray text-xs hover:bg-win-gray-light active:border-t-black active:border-l-black active:border-b-white active:border-r-white"
+                >
+                  Close
+                </button>
+              </>
+            )}
           </div>
         </WindowFrame>
       )}

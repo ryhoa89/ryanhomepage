@@ -1,0 +1,141 @@
+Recycle Bin
+
+Purpose: judgement, with dry humour.
+This is where artefacts and ideas go when they are rejected. Not people. Not intentions. Outputs.
+
+The Recycle Bin is readable as a system. It does not explain itself.
+
+Structure
+
+The Recycle Bin window contains two sections, clearly separated.
+
+1. Recently Deleted
+2. Archive (cannot be recovered)
+
+Both sections are visible at once.
+
+Recently Deleted
+
+What this section represents
+
+Things that were attempts.
+Messy artefacts. Poor execution. Ambiguity. Sloppiness.
+
+These are not rejected on principle. They’re rejected because they failed operationally.
+
+Think: “this created risk, confusion, or admin burden”.
+
+What can appear here
+
+You can include items like:
+
+usepassport_v2(final)(2).xls
+
+ai_summary_APPROVED_FINAL.docx
+
+manager_followup_notes.txt
+
+export_for_hr_latest_v4.csv
+
+adjustments_agreed_in_meeting.docx
+
+You don’t need many. 4–6 max.
+
+What happens when opened
+
+Recently Deleted items can be opened.
+
+Opening a file shows a small window with:
+
+The filename as the title
+
+A short, dry message
+
+Nothing else
+
+Examples (pick one per file, don’t rotate):
+
+“Ownership unclear. Multiple versions in circulation.”
+
+“Decisions referenced but not recorded.”
+
+“Informal agreement. No audit trail.”
+
+“Manual workaround adopted.”
+
+No buttons except Close.
+
+Important behaviour rule
+
+Recently Deleted files feel recoverable, but are not actually restorable.
+
+If you include a “Restore” button, it must do nothing except show:
+
+Restore unavailable.
+
+This reinforces that the system has already judged the artefact.
+
+Archive (cannot be recovered)
+
+What this section represents
+
+Ideas rejected on principle, not execution.
+
+These are not accidents. They are temptations.
+They are archived to prevent reuse.
+
+This section is intentionally colder.
+
+Archive (cannot be recovered)
+
+Files (final list, frozen)
+
+ai-coach-for-employees.docx
+
+personalized-ai-coach-version-1.md
+
+pip.doc
+
+ai-slop.tsx
+
+morningroutinebuilder.py
+
+Do not add more unless something genuinely belongs in the same ethical category.
+
+What happens when opened
+
+Archive files do not open like documents.
+
+Clicking an archive file opens a minimal modal or window with:
+
+A single heading: Archived
+
+One short statement
+
+No buttons other than Close
+
+No preview. No content. No interaction.
+
+Final copy (lock this in):
+
+ai-coach-for-employees.docx
+
+Coaching requires trust, context, and accountability.
+
+personalized-ai-coach-version-1.md
+
+Personalisation implied authority without consent.
+
+pip.doc
+
+Process followed. Care absent.
+
+ai-slop.tsx
+
+Output increased activity without increasing understanding.
+
+morningroutinebuilder.py
+
+Optimised behaviour without asking why.
+
+That’s it. No date. No explanation. No appeal.
