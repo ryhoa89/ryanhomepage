@@ -174,18 +174,22 @@ export default function Desktop() {
       {/* Desktop Icons - Middle Left */}
       <div className="absolute top-1/2 left-4 flex flex-col gap-6 z-0">
         <DesktopIcon
-          label="Why This Exists"
-          icon={
-            <Terminal className="w-10 h-10 text-gray-200 fill-black stroke-[1.5]" />
-          }
-          onClick={() => openFromIcon("why")}
-        />
-        <DesktopIcon
           label="Contact"
           icon={
             <Mail className="w-10 h-10 text-white fill-win-blue stroke-[1.5]" />
           }
           onClick={() => openFromIcon("contact")}
+        />
+      </div>
+
+      {/* Desktop Icons - Middle Right (Why This Exists) */}
+      <div className="absolute top-1/3 right-4 flex flex-col gap-6 z-0">
+        <DesktopIcon
+          label="Why This Exists"
+          icon={
+            <Terminal className="w-10 h-10 text-gray-200 fill-black stroke-[1.5]" />
+          }
+          onClick={() => openFromIcon("why")}
         />
       </div>
 
