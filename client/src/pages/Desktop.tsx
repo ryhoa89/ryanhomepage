@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { WindowFrame } from "@/components/WindowFrame";
 import { DesktopIcon } from "@/components/DesktopIcon";
 import { DocsWindow } from "@/pages/Docs";
@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 export default function Desktop() {
   const [activeWindow, setActiveWindow] = useState<string | null>("about");
   const [startMenuOpen, setStartMenuOpen] = useState(false);
+  const [isShutDown, setIsShutDown] = useState(false);
   const [openWindows, setOpenWindows] = useState<Record<string, boolean>>({
     mycomputer: false,
     about: true,
@@ -78,6 +79,18 @@ export default function Desktop() {
   const openFromIcon = (id: string) => {
     bringToFront(id);
   };
+
+  useEffect(() => {
+    if (!isShutDown) return;
+    
+    const handleKeyPress = () => {
+      setIsShutDown(false);
+      setStartMenuOpen(false);
+    };
+    
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [isShutDown]);
 
   return (
     <div className="w-full h-screen bg-win-teal relative overflow-hidden select-none p-4 font-sans text-sm">
@@ -745,14 +758,21 @@ export default function Desktop() {
 
             <div className="h-px bg-win-gray-dark my-1 mx-1 border-t border-win-white"></div>
 
-            {/* Exit */}
+            {/* Shut Down */}
             <button
-              onClick={() => setStartMenuOpen(false)}
+              onClick={() => setIsShutDown(true)}
               className="w-full text-left px-2 py-1 text-xs hover:bg-win-blue hover:text-white block"
             >
-              Exit
+              Shut Down
             </button>
           </div>
+        </div>
+      )}
+
+      {/* Shutdown Screen */}
+      {isShutDown && (
+        <div className="absolute inset-0 z-[200] bg-black flex items-center justify-center" style={{ animation: 'fadeIn 0.5s ease-in' }}>
+          <p className="text-white text-center text-sm">It is now safe to turn off your computer.</p>
         </div>
       )}
 
