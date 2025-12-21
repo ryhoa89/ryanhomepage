@@ -36,6 +36,7 @@ export default function Desktop() {
     music: false,
     featured: false,
     recyclebin: false,
+    mosaic: false,
   });
   const [minimizedWindows, setMinimizedWindows] = useState<
     Record<string, boolean>
@@ -51,6 +52,7 @@ export default function Desktop() {
     music: false,
     featured: false,
     recyclebin: false,
+    mosaic: false,
   });
   const [openedBinFile, setOpenedBinFile] = useState<{type: 'recent' | 'archive', name: string} | null>(null);
   const [currentTime, setCurrentTime] = useState<string>("");
@@ -743,6 +745,25 @@ export default function Desktop() {
                 </div>
               </div>
             </div>
+          </div>
+        </WindowFrame>
+      )}
+
+      {openWindows.mosaic && (
+        <WindowFrame
+          id="mosaic"
+          title="mosaic.png"
+          initialPosition={{ x: 50, y: 50 }}
+          isActive={activeWindow === "mosaic"}
+          onFocus={() => bringToFront("mosaic")}
+          onClose={() => closeWindow("mosaic")}
+          onMinimize={() => minimizeWindow("mosaic")}
+          width="400px"
+          height="400px"
+          className={minimizedWindows.mosaic ? "hidden" : ""}
+        >
+          <div className="w-full h-full bg-win-teal flex items-center justify-center p-4">
+            <img src="/mosaic-logo.png" alt="Mosaic Logo" className="w-full h-full object-contain" />
           </div>
         </WindowFrame>
       )}
