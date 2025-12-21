@@ -171,8 +171,8 @@ export default function Desktop() {
         />
       </div>
 
-      {/* Desktop Icons - Bottom Left */}
-      <div className="absolute bottom-4 left-4 flex flex-col gap-6 z-0">
+      {/* Desktop Icons - Middle Left */}
+      <div className="absolute top-1/2 left-4 flex flex-col gap-6 z-0">
         <DesktopIcon
           label="Why This Exists"
           icon={
@@ -189,8 +189,8 @@ export default function Desktop() {
         />
       </div>
 
-      {/* Desktop Icons - Bottom Right */}
-      <div className="absolute bottom-4 right-4 flex flex-col gap-6 z-0">
+      {/* Desktop Icons - Middle Right */}
+      <div className="absolute bottom-32 right-4 flex flex-col gap-6 z-0">
         <DesktopIcon
           label="Stuff I Featured In"
           icon={
