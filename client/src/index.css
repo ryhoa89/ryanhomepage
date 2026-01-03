@@ -58,17 +58,6 @@
       inset 1px 1px #ffffff,
       inset -1px -1px #000000,
       inset -2px -2px #808080;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 12px;
-  }
-
-  .win-button:active {
-    box-shadow:
-      inset 1px 1px #000000,
-      inset 2px 2px #808080;
-    transform: translate(1px, 1px);
   }
 
   .win-window {
