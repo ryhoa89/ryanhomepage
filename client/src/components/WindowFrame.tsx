@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
 import Draggable from 'react-draggable';
+import { Resizable, ResizeCallbackData } from 'react-resizable';
 import { X, Minus, Square } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import 'react-resizable/css/styles.css';
 
 interface WindowFrameProps {
   title: string;
@@ -32,8 +34,23 @@ export function WindowFrame({
 }: WindowFrameProps) {
   const nodeRef = useRef(null);
 
-  // Helper to ensure width is handled correctly for numbers
-  const widthStyle = typeof width === 'number' ? `${width}px` : width;
+  // Convert initial width/height to numbers for resizing
+  const initialWidth = typeof width === 'number' ? width : parseInt(String(width)) || 400;
+  const initialHeight = typeof height === 'number' ? height : (height === 'auto' ? 300 : parseInt(String(height)) || 300);
+
+  // State to track current window size
+  const [windowSize, setWindowSize] = useState({
+    width: initialWidth,
+    height: initialHeight
+  });
+
+  // Handle resize events
+  const handleResize = (event: React.SyntheticEvent, data: ResizeCallbackData) => {
+    setWindowSize({
+      width: data.size.width,
+      height: data.size.height
+    });
+  };
 
   return (
     <Draggable
@@ -43,17 +60,25 @@ export function WindowFrame({
       onStart={onFocus}
       bounds="parent"
     >
-      <div
-        ref={nodeRef}
-        className={cn(
-          "win-window absolute flex flex-col max-w-[94vw] shadow-[4px_4px_10px_rgba(0,0,0,0.3)]",
-          isActive ? "z-50" : "z-10",
-          className
-        )}
-        style={{ width: widthStyle, height: height === 'auto' ? 'auto' : height }}
-        onClick={onFocus}
-        id={id}
+      <Resizable
+        width={windowSize.width}
+        height={windowSize.height}
+        onResize={handleResize}
+        minConstraints={[200, 150]}
+        maxConstraints={[window.innerWidth * 0.94, window.innerHeight * 0.9]}
+        resizeHandles={['se', 'e', 's', 'sw', 'ne', 'nw', 'n', 'w']}
       >
+        <div
+          ref={nodeRef}
+          className={cn(
+            "win-window absolute flex flex-col shadow-[4px_4px_10px_rgba(0,0,0,0.3)]",
+            isActive ? "z-50" : "z-10",
+            className
+          )}
+          style={{ width: `${windowSize.width}px`, height: `${windowSize.height}px` }}
+          onClick={onFocus}
+          id={id}
+        >
         <div className={cn(
           "window-title-bar flex items-center justify-between px-1 py-0.5 mb-1 cursor-default select-none",
           isActive ? "bg-win-blue text-white" : "bg-win-gray-dark text-win-gray-light"
@@ -93,6 +118,7 @@ export function WindowFrame({
           {children}
         </div>
       </div>
+      </Resizable>
     </Draggable>
   );
 }
