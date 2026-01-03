@@ -112,6 +112,9 @@ export function WindowFrame({
         isActive ? "z-50" : "z-10",
         className
       )}
+      style={{
+        display: className?.includes('hidden') ? 'none' : undefined
+      }}
     >
       <div
         className="flex flex-col w-full h-full"
