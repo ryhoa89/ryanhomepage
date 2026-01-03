@@ -16,6 +16,7 @@ import {
   PlayIcon,
   Calendar,
   Trash2,
+  Music,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -629,18 +630,27 @@ export default function Desktop() {
       {openWindows.music && (
         <WindowFrame
           id="music"
-          title="music.png"
-          initialPosition={{ x: 50, y: 50 }}
+          title="Music Player"
+          initialPosition={{ x: 100, y: 80 }}
           isActive={activeWindow === "music"}
           onFocus={() => bringToFront("music")}
           onClose={() => closeWindow("music")}
           onMinimize={() => minimizeWindow("music")}
-          width="400px"
-          height="400px"
+          width={400}
+          height={420}
           className={minimizedWindows.music ? "hidden" : ""}
         >
-          <div className="w-full h-full bg-win-teal flex items-center justify-center p-4">
-            <img src="/mosaic-logo.png" alt="Mosaic Logo" className="w-full h-full object-contain" />
+          <div className="w-full h-full bg-black flex items-center justify-center">
+            <iframe
+              style={{ borderRadius: "12px" }}
+              src="https://open.spotify.com/embed/playlist/7zeFSy5vXqNuFSEA7yK9VP?utm_source=generator"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
           </div>
         </WindowFrame>
       )}
@@ -985,7 +995,7 @@ export default function Desktop() {
                   {id === "photos" && <Image className="w-3 h-3" />}
                   {id === "why" && <Terminal className="w-3 h-3" />}
                   {id === "contact" && <Mail className="w-3 h-3" />}
-                  {id === "music" && <Image className="w-3 h-3" />}
+                  {id === "music" && <Music className="w-3 h-3" />}
                   {id === "featured" && <HardDrive className="w-3 h-3" />}
                   <span className="capitalize truncate">
                     {id === "mycomputer"
@@ -998,11 +1008,13 @@ export default function Desktop() {
                             ? "Text Pad.txt"
                             : id === "photos"
                               ? "My Photos"
-                              : id === "mosaic"
-                                ? "mosaic.png"
-                                : id === "featured"
-                                  ? "Stuff I Featured In"
-                                  : id}
+                              : id === "music"
+                                ? "Music Player"
+                                : id === "mosaic"
+                                  ? "mosaic.png"
+                                  : id === "featured"
+                                    ? "Stuff I Featured In"
+                                    : id}
                   </span>
                 </button>
               ),
@@ -1010,7 +1022,13 @@ export default function Desktop() {
         </div>
 
         <div className="ml-auto border-2 border-t-gray-500 border-l-gray-500 border-b-white border-r-white px-2 py-0.5 text-xs bg-win-gray-light flex items-center gap-2 shadow-[1px_1px_0_white]">
-          <div className="w-3 h-3">🔊</div>
+          <button
+            onClick={() => bringToFront("music")}
+            className="w-3 h-3 hover:opacity-80 active:scale-95 cursor-pointer"
+            title="Music Player"
+          >
+            🔊
+          </button>
           <span>{currentTime}</span>
         </div>
       </div>
