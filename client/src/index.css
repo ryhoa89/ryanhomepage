@@ -54,9 +54,9 @@
 
   .win-button {
     background-color: var(--color-win-gray);
-    box-shadow:
-      inset 1px 1px #ffffff,
-      inset -1px -1px #000000,
+    box-shadow: 
+      inset 1px 1px #ffffff, 
+      inset -1px -1px #000000, 
       inset -2px -2px #808080;
   }
 
@@ -77,76 +77,79 @@
     opacity: 0.5;
   }
 
-  /* Custom resize handles for Windows 95 look */
+  /* React-rnd resize handles */
   .react-resizable-handle {
     position: absolute;
     z-index: 1;
   }
 
-  /* Corner resize handle (southeast) */
-  .react-resizable-handle-se {
-    bottom: 0;
-    right: 0;
-    cursor: se-resize;
-    width: 12px;
-    height: 12px;
-  }
-
-  /* Edge resize handles */
-  .react-resizable-handle-e {
-    right: 0;
-    top: 0;
-    bottom: 0;
+  /* Edge handles */
+  .react-resizable-handle-right,
+  .react-resizable-handle-left {
     width: 4px;
-    cursor: e-resize;
+    cursor: ew-resize;
   }
 
-  .react-resizable-handle-s {
-    bottom: 0;
-    left: 0;
-    right: 0;
+  .react-resizable-handle-top,
+  .react-resizable-handle-bottom {
     height: 4px;
-    cursor: s-resize;
+    cursor: ns-resize;
   }
 
-  .react-resizable-handle-w {
+  .react-resizable-handle-right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .react-resizable-handle-left {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 4px;
-    cursor: w-resize;
   }
 
-  .react-resizable-handle-n {
+  .react-resizable-handle-top {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    cursor: n-resize;
+  }
+
+  .react-resizable-handle-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 
   /* Corner handles */
-  .react-resizable-handle-ne {
+  .react-resizable-handle-top-left,
+  .react-resizable-handle-top-right,
+  .react-resizable-handle-bottom-left,
+  .react-resizable-handle-bottom-right {
+    width: 8px;
+    height: 8px;
+  }
+
+  .react-resizable-handle-top-left {
+    top: 0;
+    left: 0;
+    cursor: nwse-resize;
+  }
+
+  .react-resizable-handle-bottom-right {
+    bottom: 0;
+    right: 0;
+    cursor: nwse-resize;
+  }
+
+  .react-resizable-handle-top-right {
     top: 0;
     right: 0;
-    width: 12px;
-    height: 12px;
-    cursor: ne-resize;
+    cursor: nesw-resize;
   }
 
-  .react-resizable-handle-nw {
-    top: 0;
-    left: 0;
-    width: 12px;
-    height: 12px;
-    cursor: nw-resize;
-  }
-
-  .react-resizable-handle-sw {
+  .react-resizable-handle-bottom-left {
     bottom: 0;
     left: 0;
-    width: 12px;
-    height: 12px;
-    cursor: sw-resize;
+    cursor: nesw-resize;
   }
 }

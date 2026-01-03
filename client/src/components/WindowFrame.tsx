@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
-import Draggable from 'react-draggable';
-import { Resizable, ResizeCallbackData } from 'react-resizable';
+import { Rnd } from 'react-rnd';
+import type { Props as RndProps } from 'react-rnd';
 import { X, Minus, Square } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import 'react-resizable/css/styles.css';
 
 interface WindowFrameProps {
   title: string;
@@ -28,57 +27,97 @@ export function WindowFrame({
   onClose,
   onMinimize,
   className,
-  width = 400,
-  height = 'auto',
+  width = 700,
+  height = 500,
   id
 }: WindowFrameProps) {
-  const nodeRef = useRef(null);
+  // Convert width and height to numbers for Rnd
+  const initialWidth = typeof width === 'number' ? width : 700;
+  const initialHeight = typeof height === 'number' ? height : 500;
 
-  // Convert initial width/height to numbers for resizing
-  const initialWidth = typeof width === 'number' ? width : parseInt(String(width)) || 400;
-  const initialHeight = typeof height === 'number' ? height : (height === 'auto' ? 300 : parseInt(String(height)) || 300);
-
-  // State to track current window size
-  const [windowSize, setWindowSize] = useState({
+  const [isMaximized, setIsMaximized] = useState(false);
+  const [restoreState, setRestoreState] = useState({
+    x: initialPosition.x,
+    y: initialPosition.y,
     width: initialWidth,
-    height: initialHeight
+    height: initialHeight,
   });
+  const rndRef = useRef<Rnd>(null);
 
-  // Handle resize events
-  const handleResize = (event: React.SyntheticEvent, data: ResizeCallbackData) => {
-    setWindowSize({
-      width: data.size.width,
-      height: data.size.height
-    });
+  const handleMaximize = () => {
+    if (!rndRef.current) return;
+
+    if (isMaximized) {
+      // Restore to previous size and position
+      rndRef.current.updatePosition({ x: restoreState.x, y: restoreState.y });
+      rndRef.current.updateSize({ width: restoreState.width, height: restoreState.height });
+      setIsMaximized(false);
+    } else {
+      // Save current state before maximizing
+      const currentState = {
+        x: rndRef.current.props.position?.x ?? initialPosition.x,
+        y: rndRef.current.props.position?.y ?? initialPosition.y,
+        width: rndRef.current.props.size?.width ?? initialWidth,
+        height: rndRef.current.props.size?.height ?? initialHeight,
+      };
+      setRestoreState(currentState);
+
+      // Maximize to fill parent (with small margins)
+      rndRef.current.updatePosition({ x: 0, y: 0 });
+
+      // Get parent dimensions
+      const parent = rndRef.current.resizableElement.current?.parentElement;
+      if (parent) {
+        const parentWidth = parent.clientWidth;
+        const parentHeight = parent.clientHeight;
+        rndRef.current.updateSize({
+          width: parentWidth - 10,
+          height: parentHeight - 40 // Leave room for taskbar
+        });
+      }
+
+      setIsMaximized(true);
+    }
   };
 
   return (
-    <Draggable
-      handle=".window-title-bar"
-      defaultPosition={initialPosition}
-      nodeRef={nodeRef}
-      onStart={onFocus}
+    <Rnd
+      ref={rndRef}
+      default={{
+        x: initialPosition.x,
+        y: initialPosition.y,
+        width: initialWidth,
+        height: initialHeight,
+      }}
+      minWidth={200}
+      minHeight={150}
       bounds="parent"
+      dragHandleClassName="window-title-bar"
+      onMouseDown={onFocus}
+      // Disable resizing when maximized
+      enableResizing={isMaximized ? false : {
+        top: true,
+        right: true,
+        bottom: true,
+        left: true,
+        topRight: false,
+        topLeft: true,
+        bottomRight: true,
+        bottomLeft: true,
+      }}
+      // Disable dragging when maximized
+      disableDragging={isMaximized}
+      className={cn(
+        "win-window shadow-[4px_4px_10px_rgba(0,0,0,0.3)]",
+        isActive ? "z-50" : "z-10",
+        className
+      )}
     >
-      <Resizable
-        width={windowSize.width}
-        height={windowSize.height}
-        onResize={handleResize}
-        minConstraints={[200, 150]}
-        maxConstraints={[window.innerWidth * 0.94, window.innerHeight * 0.9]}
-        resizeHandles={['se', 'e', 's', 'sw', 'ne', 'nw', 'n', 'w']}
+      <div
+        className="flex flex-col w-full h-full"
+        onClick={onFocus}
+        id={id}
       >
-        <div
-          ref={nodeRef}
-          className={cn(
-            "win-window absolute flex flex-col shadow-[4px_4px_10px_rgba(0,0,0,0.3)]",
-            isActive ? "z-50" : "z-10",
-            className
-          )}
-          style={{ width: `${windowSize.width}px`, height: `${windowSize.height}px` }}
-          onClick={onFocus}
-          id={id}
-        >
         <div className={cn(
           "window-title-bar flex items-center justify-between px-1 py-0.5 mb-1 cursor-default select-none",
           isActive ? "bg-win-blue text-white" : "bg-win-gray-dark text-win-gray-light"
@@ -88,7 +127,7 @@ export function WindowFrame({
             <span>{title}</span>
           </div>
           <div className="flex gap-0.5">
-            <button 
+            <button
               onClick={(e) => { e.stopPropagation(); onMinimize?.(); }}
               onTouchEnd={(e) => { e.stopPropagation(); onMinimize?.(); }}
               className="win-button w-[16px] h-[14px] p-0 flex items-center justify-center active:translate-y-[1px]"
@@ -96,10 +135,11 @@ export function WindowFrame({
             >
               <div className="w-[8px] h-[2px] bg-black translate-y-[3px]" />
             </button>
-            <button 
-              className="win-button w-[16px] h-[14px] p-0 flex items-center justify-center opacity-50 cursor-not-allowed"
+            <button
+              onClick={(e) => { e.stopPropagation(); handleMaximize(); }}
+              onTouchEnd={(e) => { e.stopPropagation(); handleMaximize(); }}
+              className="win-button w-[16px] h-[14px] p-0 flex items-center justify-center active:translate-y-[1px]"
               aria-label="Maximize"
-              disabled
             >
               <div className="w-[9px] h-[8px] border-t border-l border-r border-black" />
             </button>
@@ -118,7 +158,6 @@ export function WindowFrame({
           {children}
         </div>
       </div>
-      </Resizable>
-    </Draggable>
+    </Rnd>
   );
 }
