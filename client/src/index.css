@@ -54,20 +54,21 @@
 
   .win-button {
     background-color: var(--color-win-gray);
-    box-shadow: 
-      inset 1px 1px #ffffff, 
-      inset -1px -1px #000000, 
+    box-shadow:
+      inset 1px 1px #ffffff,
+      inset -1px -1px #000000,
       inset -2px -2px #808080;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 4px 12px;
-    active: {
-      box-shadow: 
-        inset 1px 1px #000000, 
-        inset 2px 2px #808080;
-      transform: translate(1px, 1px);
-    }
+  }
+
+  .win-button:active {
+    box-shadow:
+      inset 1px 1px #000000,
+      inset 2px 2px #808080;
+    transform: translate(1px, 1px);
   }
 
   .win-window {
@@ -85,5 +86,78 @@
     background-size: 4px 4px;
     background-position: 0 0;
     opacity: 0.5;
+  }
+
+  /* Custom resize handles for Windows 95 look */
+  .react-resizable-handle {
+    position: absolute;
+    z-index: 1;
+  }
+
+  /* Corner resize handle (southeast) */
+  .react-resizable-handle-se {
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Edge resize handles */
+  .react-resizable-handle-e {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    cursor: e-resize;
+  }
+
+  .react-resizable-handle-s {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    cursor: s-resize;
+  }
+
+  .react-resizable-handle-w {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    cursor: w-resize;
+  }
+
+  .react-resizable-handle-n {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    cursor: n-resize;
+  }
+
+  /* Corner handles */
+  .react-resizable-handle-ne {
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    cursor: ne-resize;
+  }
+
+  .react-resizable-handle-nw {
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    cursor: nw-resize;
+  }
+
+  .react-resizable-handle-sw {
+    bottom: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    cursor: sw-resize;
   }
 }
